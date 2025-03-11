@@ -14,11 +14,11 @@ Este projeto é apenas um esboço inicial com características inovadoras. Embor
 
 ### 💼 Adquira a Versão Completa
 
-Para quem deseja explorar ainda mais funcionalidades, a versão completa em **PHP** está disponível para compra com **@PladixOficial**.
+Para quem deseja explorar ainda mais funcionalidades, a versão completa em **PHP** está disponível para compra com **@kakaximodzzz**.
 
 ### 📣 Contato
 
-- **Canal:** [Apis & Files](https://t.me/PladixOficial) by **@PladixOficial**
+- **Canal:** [Apis & Files](https://t.me/kakaximodzzz) by **@kakaximodzzz**
 - Compartilhando gratuitamente arquivos em PHP, Python, Node.js e muito mais!
 
 ---
