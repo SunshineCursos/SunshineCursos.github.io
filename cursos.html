@@ -84,6 +84,29 @@
             background: #1a365f;
             color: white;
         }
+        /* Estilos para a notificação "Copiado" */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #64ffda;
+            color: #0a192f;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -159,6 +182,9 @@
         </div>
     </div>
 
+    <!-- Notificação "Copiado" -->
+    <div id="toast" class="toast">Chave PIX copiada!</div>
+
     <script>
         // Função para exibir o modal do PIX
         function showPixModal(moduleName) {
@@ -177,16 +203,25 @@
             modal.style.display = 'flex';
         }
 
-        // Função para copiar a chave PIX
+        // Função para copiar a chave PIX e mostrar a notificação
         function copyPixKey() {
             const pixKey = document.getElementById('pixKey').innerText;
             navigator.clipboard.writeText(pixKey)
                 .then(() => {
-                    alert('Chave PIX copiada com sucesso!');
+                    showToast();
                 })
                 .catch(() => {
                     alert('Erro ao copiar a chave PIX.');
                 });
+        }
+
+        // Função para exibir a notificação "Copiado"
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000); // A notificação desaparece após 3 segundos
         }
 
         // Função para fechar o modal
