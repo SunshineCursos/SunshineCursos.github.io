@@ -70,6 +70,20 @@
             font-size: 24px;
             cursor: pointer;
         }
+        .copy-button {
+            background: #64ffda;
+            color: #0a192f;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .copy-button:hover {
+            background: #1a365f;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -133,7 +147,11 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <h2 id="modalTitle"></h2>
             <p>Realize o pagamento via PIX para a chave abaixo:</p>
-            <p><strong>Chave PIX:</strong> 59.664.760/0001-46</p>
+            <p>
+                <strong>Chave PIX:</strong>
+                <span id="pixKey">59.664.760/0001-46</span>
+                <button class="copy-button" onclick="copyPixKey()">Copiar Chave</button>
+            </p>
             <p>Ou escaneie o QR Code:</p>
             <img src="https://via.placeholder.com/200" alt="QR Code PIX"> <!-- Substitua pelo seu QR Code -->
             <p>Após o pagamento, clique no botão abaixo para enviar o comprovante no WhatsApp.</p>
@@ -157,6 +175,18 @@
 
             // Exibe o modal
             modal.style.display = 'flex';
+        }
+
+        // Função para copiar a chave PIX
+        function copyPixKey() {
+            const pixKey = document.getElementById('pixKey').innerText;
+            navigator.clipboard.writeText(pixKey)
+                .then(() => {
+                    alert('Chave PIX copiada com sucesso!');
+                })
+                .catch(() => {
+                    alert('Erro ao copiar a chave PIX.');
+                });
         }
 
         // Função para fechar o modal
