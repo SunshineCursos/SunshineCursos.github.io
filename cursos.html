@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos - Vitalidade de Idosos</title>
+    <title>Cursos - Vitalidade Para Idosos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
@@ -42,6 +42,34 @@
             background: #1a365f;
             color: white;
         }
+        /* Estilos para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #1a365f;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+        .close {
+            color: #64ffda;
+            font-size: 24px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -49,47 +77,101 @@
         <h1>Curso: Vitalidade de Idosos</h1>
         <p>Cada módulo deve ser adquirido separadamente.</p>
         
+        <!-- Módulo 1 -->
         <div class="module">
             <h2>Módulo 1: Introdução à Saúde do Idoso</h2>
             <p>Valor: R$50,00</p>
-            <a class="button" href="https://wa.me/55477191829433?text=Ol%C3%A1%2C%20realizei%20o%20pagamento%20do%20M%C3%B3dulo%201%20do%20curso%20e%20gostaria%20de%20receber%20o%20acesso.%20Aguardo%20as%20instru%C3%A7%C3%B5es.%20Obrigado!" target="_blank">Pagar e Solicitar Acesso</a>
+            <button class="button" onclick="showPixModal('Módulo 1')">Pagar e Solicitar Acesso</button>
         </div>
-        
+
+        <!-- Módulo 2 -->
         <div class="module">
             <h2>Módulo 2: Exercícios e Mobilidade</h2>
             <p>Valor: R$50,00</p>
-            <a class="button" href="https://wa.me/55477191829433?text=Ol%C3%A1%2C%20realizei%20o%20pagamento%20do%20M%C3%B3dulo%202%20do%20curso%20e%20gostaria%20de%20receber%20o%20acesso.%20Aguardo%20as%20instru%C3%A7%C3%B5es.%20Obrigado!" target="_blank">Pagar e Solicitar Acesso</a>
+            <button class="button" onclick="showPixModal('Módulo 2')">Pagar e Solicitar Acesso</button>
         </div>
-        
+
+        <!-- Módulo 3 -->
         <div class="module">
             <h2>Módulo 3: Alimentação Saudável</h2>
             <p>Valor: R$50,00</p>
-            <a class="button" href="https://wa.me/55477191829433?text=Ol%C3%A1%2C%20realizei%20o%20pagamento%20do%20M%C3%B3dulo%203%20do%20curso%20e%20gostaria%20de%20receber%20o%20acesso.%20Aguardo%20as%20instru%C3%A7%C3%B5es.%20Obrigado!" target="_blank">Pagar e Solicitar Acesso</a>
+            <button class="button" onclick="showPixModal('Módulo 3')">Pagar e Solicitar Acesso</button>
         </div>
 
+        <!-- Módulo 4 -->
         <div class="module">
             <h2>Módulo 4: Saúde Mental</h2>
             <p>Valor: R$50,00</p>
-            <a class="button" href="https://wa.me/55477191829433?text=Ol%C3%A1%2C%20realizei%20o%20pagamento%20do%20M%C3%B3dulo%204%20do%20curso%20e%20gostaria%20de%20receber%20o%20acesso.%20Aguardo%20as%20instru%C3%A7%C3%B5es.%20Obrigado!" target="_blank">Pagar e Solicitar Acesso</a>
+            <button class="button" onclick="showPixModal('Módulo 4')">Pagar e Solicitar Acesso</button>
         </div>
 
+        <!-- Módulo 5 -->
         <div class="module">
             <h2>Módulo 5: Prevenção de Quedas</h2>
             <p>Valor: R$50,00</p>
-            <a class="button" href="https://wa.me/55477191829433?text=Ol%C3%A1%2C%20realizei%20o%20pagamento%20do%20M%C3%B3dulo%205%20do%20curso%20e%20gostaria%20de%20receber%20o%20acesso.%20Aguardo%20as%20instru%C3%A7%C3%B5es.%20Obrigado!" target="_blank">Pagar e Solicitar Acesso</a>
+            <button class="button" onclick="showPixModal('Módulo 5')">Pagar e Solicitar Acesso</button>
         </div>
 
+        <!-- Módulo 6 -->
         <div class="module">
             <h2>Módulo 6: Cuidadores e Apoio Familiar</h2>
             <p>Valor: R$50,00</p>
-            <a class="button" href="https://wa.me/55477191829433?text=Ol%C3%A1%2C%20realizei%20o%20pagamento%20do%20M%C3%B3dulo%206%20do%20curso%20e%20gostaria%20de%20receber%20o%20acesso.%20Aguardo%20as%20instru%C3%A7%C3%B5es.%20Obrigado!" target="_blank">Pagar e Solicitar Acesso</a>
+            <button class="button" onclick="showPixModal('Módulo 6')">Pagar e Solicitar Acesso</button>
         </div>
 
+        <!-- Módulo 7 -->
         <div class="module">
             <h2>Módulo 7: Envelhecimento Ativo</h2>
             <p>Valor: R$50,00</p>
-            <a class="button" href="https://wa.me/55477191829433?text=Ol%C3%A1%2C%20realizei%20o%20pagamento%20do%20M%C3%B3dulo%207%20do%20curso%20e%20gostaria%20de%20receber%20o%20acesso.%20Aguardo%20as%20instru%C3%A7%C3%B5es.%20Obrigado!" target="_blank">Pagar e Solicitar Acesso</a>
+            <button class="button" onclick="showPixModal('Módulo 7')">Pagar e Solicitar Acesso</button>
         </div>
     </div>
+
+    <!-- Modal PIX -->
+    <div id="pixModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p>Realize o pagamento via PIX para a chave abaixo:</p>
+            <p><strong>Chave PIX:</strong> 59.664.760/0001-46</p>
+            <p>Ou escaneie o QR Code:</p>
+            <img src="https://via.placeholder.com/200" alt="QR Code PIX"> <!-- Substitua pelo seu QR Code -->
+            <p>Após o pagamento, clique no botão abaixo para enviar o comprovante no WhatsApp.</p>
+            <a id="whatsappLink" class="button" target="_blank">Enviar Comprovante no WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        // Função para exibir o modal do PIX
+        function showPixModal(moduleName) {
+            const modal = document.getElementById('pixModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const whatsappLink = document.getElementById('whatsappLink');
+
+            // Define o título do modal
+            modalTitle.textContent = `Pagamento do ${moduleName}`;
+
+            // Configura o link do WhatsApp
+            const message = `Olá, realizei o pagamento do ${moduleName} e gostaria de receber o acesso. Aqui está o comprovante.`;
+            whatsappLink.href = `https://wa.me/55477191829433?text=${encodeURIComponent(message)}`;
+
+            // Exibe o modal
+            modal.style.display = 'flex';
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            const modal = document.getElementById('pixModal');
+            modal.style.display = 'none';
+        }
+
+        // Fecha o modal ao clicar fora dele
+        window.onclick = function(event) {
+            const modal = document.getElementById('pixModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
