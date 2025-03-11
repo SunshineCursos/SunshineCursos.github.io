@@ -3,30 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos - Vitalidade Para Idosos</title>
+    <title>Cursos Disponíveis</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             background: #0a192f;
             color: white;
-            text-align: center;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 50px auto;
             padding: 20px;
-            background: rgba(17, 34, 64, 0.9);
-            border-radius: 10px;
         }
-        .module {
+        h1 {
+            text-align: center;
+            color: #64ffda;
+        }
+        .course-section {
+            margin-bottom: 40px;
+        }
+        .course-section h2 {
+            color: #64ffda;
+            margin-bottom: 20px;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .course-card {
             background: #1a365f;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .button {
+        .course-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .course-card h3 {
+            color: #64ffda;
+            margin: 0 0 10px;
+        }
+        .course-card p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .course-card.expanded {
+            grid-column: span 2;
+            background: #1a365f;
+        }
+        .course-card.expanded p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .course-card.expanded button {
             background: #64ffda;
             color: #0a192f;
             padding: 10px 20px;
@@ -35,207 +71,254 @@
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
+            margin-top: 20px;
         }
-        .button:hover {
+        .course-card.expanded button:hover {
             background: #1a365f;
             color: white;
-        }
-        /* Estilos para o modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: #1a365f;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .modal-content img {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-        }
-        .close {
-            color: #64ffda;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .copy-button {
-            background: #64ffda;
-            color: #0a192f;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-        .copy-button:hover {
-            background: #1a365f;
-            color: white;
-        }
-        /* Estilos para a notificação "Copiado" */
-        .toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #64ffda;
-            color: #0a192f;
-            text-align: center;
-            border-radius: 5px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.5s, visibility 0.5s;
-        }
-        .toast.show {
-            visibility: visible;
-            opacity: 1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Curso: Vitalidade Para Idosos</h1>
-        <p>Cada módulo deve ser adquirido separadamente.</p>
-        
-        <!-- Módulo 1 -->
-        <div class="module">
-            <h2>Módulo 1: Introdução à Saúde do Idoso</h2>
-            <p>Valor: R$50,00</p>
-            <button class="button" onclick="showPixModal('Módulo 1')">Pagar e Solicitar Acesso</button>
+        <h1>Cursos Disponíveis</h1>
+
+        <!-- Seção do Curso de Vitalidade para Idosos -->
+        <div class="course-section">
+            <h2>Vitalidade para Idosos</h2>
+            <div class="course-grid">
+                <!-- Módulo 1 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 1: Introdução à Saúde do Idoso</h3>
+                    <p>Fundamentos da saúde do idoso, cuidados básicos e promoção do bem-estar.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda sobre os principais cuidados com a saúde do idoso, incluindo alimentação, exercícios e prevenção de doenças crônicas.</p>
+                        <button onclick="proceedToCourse('vitalidade-modulo1')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 2: Exercícios e Mobilidade</h3>
+                    <p>Técnicas de exercícios físicos para melhorar a mobilidade e a qualidade de vida.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Descubra exercícios específicos para melhorar a mobilidade, força e equilíbrio dos idosos.</p>
+                        <button onclick="proceedToCourse('vitalidade-modulo2')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 3: Alimentação Saudável</h3>
+                    <p>Impacto de uma alimentação balanceada na saúde e longevidade.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda sobre dietas específicas para idosos, incluindo alimentos que promovem a saúde e previnem doenças.</p>
+                        <button onclick="proceedToCourse('vitalidade-modulo3')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 4 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 4: Saúde Mental</h3>
+                    <p>Abordagem sobre depressão, ansiedade e estratégias para manter a mente ativa.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Conheça técnicas para cuidar da saúde mental dos idosos, incluindo atividades cognitivas e suporte emocional.</p>
+                        <button onclick="proceedToCourse('vitalidade-modulo4')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 5 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 5: Prevenção de Quedas</h3>
+                    <p>Técnicas e práticas para prevenir quedas e lesões.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Descubra como adaptar o ambiente e ensinar técnicas para evitar quedas e lesões.</p>
+                        <button onclick="proceedToCourse('vitalidade-modulo5')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 6 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 6: Cuidadores e Apoio Familiar</h3>
+                    <p>Estratégias para cuidadores e familiares oferecerem suporte emocional e físico.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda estratégias para cuidar de idosos, incluindo comunicação eficaz e cuidados diários.</p>
+                        <button onclick="proceedToCourse('vitalidade-modulo6')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 7 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 7: Envelhecimento Ativo</h3>
+                    <p>Promoção de um envelhecimento ativo e saudável.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Conheça práticas para manter os idosos ativos, engajados e saudáveis.</p>
+                        <button onclick="proceedToCourse('vitalidade-modulo7')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Módulo 2 -->
-        <div class="module">
-            <h2>Módulo 2: Exercícios e Mobilidade</h2>
-            <p>Valor: R$50,00</p>
-            <button class="button" onclick="showPixModal('Módulo 2')">Pagar e Solicitar Acesso</button>
+        <!-- Seção do Curso "Transformação Corporal" -->
+        <div class="course-section">
+            <h2>Transformação Corporal</h2>
+            <div class="course-grid">
+                <!-- Módulo 1 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 1: Fundamentos da Transformação Corporal</h3>
+                    <p>Introdução aos princípios básicos para transformar o corpo de forma saudável.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda os fundamentos da transformação corporal, incluindo alimentação, exercícios e hábitos saudáveis.</p>
+                        <button onclick="proceedToCourse('transformacao-modulo1')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 2: Exercícios para Definição Muscular</h3>
+                    <p>Técnicas de exercícios para ganhar massa muscular e definir o corpo.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Descubra os melhores exercícios para ganhar massa muscular e definir o corpo de forma eficiente.</p>
+                        <button onclick="proceedToCourse('transformacao-modulo2')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 3: Nutrição para Transformação Corporal</h3>
+                    <p>Aprenda a alimentação ideal para alcançar seus objetivos corporais.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Conheça os alimentos e dietas que ajudam na transformação corporal, incluindo dicas para ganho de massa e perda de gordura.</p>
+                        <button onclick="proceedToCourse('transformacao-modulo3')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Módulo 3 -->
-        <div class="module">
-            <h2>Módulo 3: Alimentação Saudável</h2>
-            <p>Valor: R$50,00</p>
-            <button class="button" onclick="showPixModal('Módulo 3')">Pagar e Solicitar Acesso</button>
+        <!-- Seção do Curso "Solução para Negócios" -->
+        <div class="course-section">
+            <h2>Solução para Negócios</h2>
+            <div class="course-grid">
+                <!-- Módulo 1 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 1: Gestão Eficiente</h3>
+                    <p>Aprenda a gerenciar seu negócio de forma eficiente e lucrativa.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Este módulo aborda técnicas de gestão para melhorar a eficiência e a lucratividade do seu negócio.</p>
+                        <button onclick="proceedToCourse('solucao-negocios-modulo1')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 2: Marketing Digital</h3>
+                    <p>Domine as estratégias de marketing digital para alavancar seu negócio.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda a usar ferramentas de marketing digital para atrair clientes e aumentar as vendas.</p>
+                        <button onclick="proceedToCourse('solucao-negocios-modulo2')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Módulo 4 -->
-        <div class="module">
-            <h2>Módulo 4: Saúde Mental</h2>
-            <p>Valor: R$50,00</p>
-            <button class="button" onclick="showPixModal('Módulo 4')">Pagar e Solicitar Acesso</button>
+        <!-- Seção do Curso "Desenvolvimento Pessoal" -->
+        <div class="course-section">
+            <h2>Desenvolvimento Pessoal</h2>
+            <div class="course-grid">
+                <!-- Módulo 1 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 1: Autoconhecimento e Autocontrole</h3>
+                    <p>Descubra como se conhecer melhor e desenvolver autocontrole emocional.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda técnicas para entender suas emoções, comportamentos e como gerenciá-los de forma eficaz.</p>
+                        <button onclick="proceedToCourse('desenvolvimento-modulo1')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 2: Comunicação Eficaz</h3>
+                    <p>Melhore suas habilidades de comunicação para relacionamentos mais saudáveis.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda a se comunicar de forma clara e assertiva, melhorando seus relacionamentos pessoais e profissionais.</p>
+                        <button onclick="proceedToCourse('desenvolvimento-modulo2')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Módulo 5 -->
-        <div class="module">
-            <h2>Módulo 5: Prevenção de Quedas</h2>
-            <p>Valor: R$50,00</p>
-            <button class="button" onclick="showPixModal('Módulo 5')">Pagar e Solicitar Acesso</button>
+        <!-- Seção do Curso "Bem-Estar e Saúde" -->
+        <div class="course-section">
+            <h2>Bem-Estar e Saúde</h2>
+            <div class="course-grid">
+                <!-- Módulo 1 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 1: Hábitos Saudáveis para uma Vida Plena</h3>
+                    <p>Aprenda a criar hábitos que promovem saúde física e mental.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Descubra como pequenas mudanças no dia a dia podem transformar sua saúde e bem-estar.</p>
+                        <button onclick="proceedToCourse('bemestar-modulo1')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 2: Gerenciamento do Estresse</h3>
+                    <p>Técnicas para reduzir o estresse e melhorar a qualidade de vida.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda estratégias práticas para gerenciar o estresse e manter o equilíbrio emocional.</p>
+                        <button onclick="proceedToCourse('bemestar-modulo2')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Módulo 6 -->
-        <div class="module">
-            <h2>Módulo 6: Cuidadores e Apoio Familiar</h2>
-            <p>Valor: R$50,00</p>
-            <button class="button" onclick="showPixModal('Módulo 6')">Pagar e Solicitar Acesso</button>
-        </div>
+        <!-- Seção do Curso "Superação de Desafios" -->
+        <div class="course-section">
+            <h2>Superação de Desafios</h2>
+            <div class="course-grid">
+                <!-- Módulo 1 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 1: Como Vencer Limitações</h3>
+                    <p>Descubra como superar obstáculos e alcançar seus objetivos.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda a identificar e superar limitações pessoais e profissionais.</p>
+                        <button onclick="proceedToCourse('superacao-modulo1')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
 
-        <!-- Módulo 7 -->
-        <div class="module">
-            <h2>Módulo 7: Envelhecimento Ativo</h2>
-            <p>Valor: R$50,00</p>
-            <button class="button" onclick="showPixModal('Módulo 7')">Pagar e Solicitar Acesso</button>
+                <!-- Módulo 2 -->
+                <div class="course-card" onclick="expandCourse(this)">
+                    <h3>Módulo 2: Resiliência e Persistência</h3>
+                    <p>Desenvolva resiliência para enfrentar desafios com confiança.</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p>Descrição detalhada: Aprenda a ser resiliente e persistente, mesmo diante das adversidades.</p>
+                        <button onclick="proceedToCourse('superacao-modulo2')">Prosseguir para o Curso</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Modal PIX -->
-    <div id="pixModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p>Realize o pagamento via PIX para a chave abaixo:</p>
-            <p>
-                <strong>Chave PIX:</strong>
-                <span id="pixKey">59.664.760/0001-46</span>
-                <button class="copy-button" onclick="copyPixKey()">Copiar Chave</button>
-            </p>
-            <p>Ou escaneie o QR Code:</p>
-            <img src="https://via.placeholder.com/200" alt="QR Code PIX"> <!-- Substitua pelo seu QR Code -->
-            <p>Após o pagamento, clique no botão abaixo para enviar o comprovante no WhatsApp.</p>
-            <a id="whatsappLink" class="button" target="_blank">Enviar Comprovante no WhatsApp</a>
-        </div>
-    </div>
-
-    <!-- Notificação "Copiado" -->
-    <div id="toast" class="toast">Chave PIX copiada!</div>
 
     <script>
-        // Função para exibir o modal do PIX
-        function showPixModal(moduleName) {
-            const modal = document.getElementById('pixModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const whatsappLink = document.getElementById('whatsappLink');
+        // Função para expandir o card do curso
+        function expandCourse(card) {
+            const allCards = document.querySelectorAll('.course-card');
+            allCards.forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('expanded');
+                    c.querySelector('.expanded-content').style.display = 'none';
+                }
+            });
 
-            // Define o título do modal
-            modalTitle.textContent = `Pagamento do ${moduleName}`;
-
-            // Configura o link do WhatsApp
-            const message = `Olá, realizei o pagamento do ${moduleName} e gostaria de receber o acesso. Aqui está o comprovante.`;
-            whatsappLink.href = `https://wa.me/55477191829433?text=${encodeURIComponent(message)}`;
-
-            // Exibe o modal
-            modal.style.display = 'flex';
+            card.classList.toggle('expanded');
+            const expandedContent = card.querySelector('.expanded-content');
+            expandedContent.style.display = card.classList.contains('expanded') ? 'block' : 'none';
         }
 
-        // Função para copiar a chave PIX e mostrar a notificação
-        function copyPixKey() {
-            const pixKey = document.getElementById('pixKey').innerText;
-            navigator.clipboard.writeText(pixKey)
-                .then(() => {
-                    showToast();
-                })
-                .catch(() => {
-                    alert('Erro ao copiar a chave PIX.');
-                });
-        }
-
-        // Função para exibir a notificação "Copiado"
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000); // A notificação desaparece após 3 segundos
-        }
-
-        // Função para fechar o modal
-        function closeModal() {
-            const modal = document.getElementById('pixModal');
-            modal.style.display = 'none';
-        }
-
-        // Fecha o modal ao clicar fora dele
-        window.onclick = function(event) {
-            const modal = document.getElementById('pixModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
+        // Função para prosseguir para a página de compra do curso
+        function proceedToCourse(course) {
+            window.location.href = `comprar_curso.html?curso=${course}`;
         }
     </script>
 </body>
