@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos Disponíveis</title>
+    <title>Cursos e E-books Disponíveis</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -22,47 +22,47 @@
             text-align: center;
             color: #64ffda;
         }
-        .course-section {
+        .section {
             margin-bottom: 40px;
         }
-        .course-section h2 {
+        .section h2 {
             color: #64ffda;
             margin-bottom: 20px;
         }
-        .course-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
-        .course-card {
+        .card {
             background: #1a365f;
             border-radius: 10px;
             padding: 20px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .course-card:hover {
+        .card:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-        .course-card h3 {
+        .card h3 {
             color: #64ffda;
             margin: 0 0 10px;
         }
-        .course-card p {
+        .card p {
             font-size: 14px;
             line-height: 1.5;
             margin: 0;
         }
-        .course-card.expanded {
+        .card.expanded {
             grid-column: span 2;
             background: #1a365f;
         }
-        .course-card.expanded p {
+        .card.expanded p {
             font-size: 16px;
             margin: 10px 0;
         }
-        .course-card.expanded button {
+        .card.expanded button {
             background: #64ffda;
             color: #0a192f;
             padding: 10px 20px;
@@ -73,7 +73,7 @@
             font-weight: bold;
             margin-top: 20px;
         }
-        .course-card.expanded button:hover {
+        .card.expanded button:hover {
             background: #1a365f;
             color: white;
         }
@@ -81,255 +81,185 @@
 </head>
 <body>
     <div class="container">
-        <h1>Cursos Disponíveis</h1>
+        <h1>Cursos e E-books Disponíveis</h1>
 
-        <!-- Seção do Curso de Vitalidade para Idosos -->
-        <div class="course-section">
-            <h2>Vitalidade para Idosos</h2>
-            <div class="course-grid">
-                <!-- Módulo 1 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 1: Introdução à Saúde do Idoso</h3>
-                    <p>Fundamentos da saúde do idoso, cuidados básicos e promoção do bem-estar.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda sobre os principais cuidados com a saúde do idoso, incluindo alimentação, exercícios e prevenção de doenças crônicas.</p>
-                        <button onclick="proceedToCourse('vitalidade-modulo1')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 2 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 2: Exercícios e Mobilidade</h3>
-                    <p>Técnicas de exercícios físicos para melhorar a mobilidade e a qualidade de vida.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Descubra exercícios específicos para melhorar a mobilidade, força e equilíbrio dos idosos.</p>
-                        <button onclick="proceedToCourse('vitalidade-modulo2')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 3 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 3: Alimentação Saudável</h3>
-                    <p>Impacto de uma alimentação balanceada na saúde e longevidade.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda sobre dietas específicas para idosos, incluindo alimentos que promovem a saúde e previnem doenças.</p>
-                        <button onclick="proceedToCourse('vitalidade-modulo3')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 4 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 4: Saúde Mental</h3>
-                    <p>Abordagem sobre depressão, ansiedade e estratégias para manter a mente ativa.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Conheça técnicas para cuidar da saúde mental dos idosos, incluindo atividades cognitivas e suporte emocional.</p>
-                        <button onclick="proceedToCourse('vitalidade-modulo4')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 5 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 5: Prevenção de Quedas</h3>
-                    <p>Técnicas e práticas para prevenir quedas e lesões.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Descubra como adaptar o ambiente e ensinar técnicas para evitar quedas e lesões.</p>
-                        <button onclick="proceedToCourse('vitalidade-modulo5')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 6 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 6: Cuidadores e Apoio Familiar</h3>
-                    <p>Estratégias para cuidadores e familiares oferecerem suporte emocional e físico.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda estratégias para cuidar de idosos, incluindo comunicação eficaz e cuidados diários.</p>
-                        <button onclick="proceedToCourse('vitalidade-modulo6')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 7 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 7: Envelhecimento Ativo</h3>
-                    <p>Promoção de um envelhecimento ativo e saudável.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Conheça práticas para manter os idosos ativos, engajados e saudáveis.</p>
-                        <button onclick="proceedToCourse('vitalidade-modulo7')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
+        <!-- Seção de Cursos -->
+        <div class="section">
+            <h2>Cursos</h2>
+            <div class="grid" id="cursosGrid">
+                <!-- Os cursos serão carregados dinamicamente aqui -->
             </div>
         </div>
 
-        <!-- Seção do Curso "Transformação Corporal" -->
-        <div class="course-section">
-            <h2>Transformação Corporal</h2>
-            <div class="course-grid">
-                <!-- Módulo 1 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 1: Fundamentos da Transformação Corporal</h3>
-                    <p>Introdução aos princípios básicos para transformar o corpo de forma saudável.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda os fundamentos da transformação corporal, incluindo alimentação, exercícios e hábitos saudáveis.</p>
-                        <button onclick="proceedToCourse('transformacao-modulo1')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 2 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 2: Exercícios para Definição Muscular</h3>
-                    <p>Técnicas de exercícios para ganhar massa muscular e definir o corpo.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Descubra os melhores exercícios para ganhar massa muscular e definir o corpo de forma eficiente.</p>
-                        <button onclick="proceedToCourse('transformacao-modulo2')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 3 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 3: Nutrição para Transformação Corporal</h3>
-                    <p>Aprenda a alimentação ideal para alcançar seus objetivos corporais.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Conheça os alimentos e dietas que ajudam na transformação corporal, incluindo dicas para ganho de massa e perda de gordura.</p>
-                        <button onclick="proceedToCourse('transformacao-modulo3')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Seção do Curso "Solução para Negócios" -->
-        <div class="course-section">
-            <h2>Solução para Negócios</h2>
-            <div class="course-grid">
-                <!-- Módulo 1 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 1: Gestão Eficiente</h3>
-                    <p>Aprenda a gerenciar seu negócio de forma eficiente e lucrativa.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Este módulo aborda técnicas de gestão para melhorar a eficiência e a lucratividade do seu negócio.</p>
-                        <button onclick="proceedToCourse('solucao-negocios-modulo1')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 2 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 2: Marketing Digital</h3>
-                    <p>Domine as estratégias de marketing digital para alavancar seu negócio.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda a usar ferramentas de marketing digital para atrair clientes e aumentar as vendas.</p>
-                        <button onclick="proceedToCourse('solucao-negocios-modulo2')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Seção do Curso "Desenvolvimento Pessoal" -->
-        <div class="course-section">
-            <h2>Desenvolvimento Pessoal</h2>
-            <div class="course-grid">
-                <!-- Módulo 1 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 1: Autoconhecimento e Autocontrole</h3>
-                    <p>Descubra como se conhecer melhor e desenvolver autocontrole emocional.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda técnicas para entender suas emoções, comportamentos e como gerenciá-los de forma eficaz.</p>
-                        <button onclick="proceedToCourse('desenvolvimento-modulo1')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 2 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 2: Comunicação Eficaz</h3>
-                    <p>Melhore suas habilidades de comunicação para relacionamentos mais saudáveis.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda a se comunicar de forma clara e assertiva, melhorando seus relacionamentos pessoais e profissionais.</p>
-                        <button onclick="proceedToCourse('desenvolvimento-modulo2')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Seção do Curso "Bem-Estar e Saúde" -->
-        <div class="course-section">
-            <h2>Bem-Estar e Saúde</h2>
-            <div class="course-grid">
-                <!-- Módulo 1 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 1: Hábitos Saudáveis para uma Vida Plena</h3>
-                    <p>Aprenda a criar hábitos que promovem saúde física e mental.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Descubra como pequenas mudanças no dia a dia podem transformar sua saúde e bem-estar.</p>
-                        <button onclick="proceedToCourse('bemestar-modulo1')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 2 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 2: Gerenciamento do Estresse</h3>
-                    <p>Técnicas para reduzir o estresse e melhorar a qualidade de vida.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda estratégias práticas para gerenciar o estresse e manter o equilíbrio emocional.</p>
-                        <button onclick="proceedToCourse('bemestar-modulo2')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Seção do Curso "Superação de Desafios" -->
-        <div class="course-section">
-            <h2>Superação de Desafios</h2>
-            <div class="course-grid">
-                <!-- Módulo 1 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 1: Como Vencer Limitações</h3>
-                    <p>Descubra como superar obstáculos e alcançar seus objetivos.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda a identificar e superar limitações pessoais e profissionais.</p>
-                        <button onclick="proceedToCourse('superacao-modulo1')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 2 -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Módulo 2: Resiliência e Persistência</h3>
-                    <p>Desenvolva resiliência para enfrentar desafios com confiança.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda a ser resiliente e persistente, mesmo diante das adversidades.</p>
-                        <button onclick="proceedToCourse('superacao-modulo2')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Seção do Curso "Python" -->
-        <div class="course-section">
-            <h2>Programação em Python</h2>
-            <div class="course-grid">
-                <!-- Curso de Python Básico -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Python Básico</h3>
-                    <p>Introdução à linguagem Python, sintaxe básica e conceitos fundamentais.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprenda os conceitos fundamentais da linguagem Python, incluindo sintaxe, estruturas de controle e funções.</p>
-                        <button onclick="proceedToCourse('python-basico')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
-
-                <!-- Curso de Python Avançado -->
-                <div class="course-card" onclick="expandCourse(this)">
-                    <h3>Python Avançado</h3>
-                    <p>Tópicos avançados de Python, como POO, manipulação de arquivos e bibliotecas populares.</p>
-                    <div class="expanded-content" style="display: none;">
-                        <p>Descrição detalhada: Aprofunde seus conhecimentos em Python com tópicos avançados como programação orientada a objetos, manipulação de arquivos e bibliotecas populares.</p>
-                        <button onclick="proceedToCourse('python-avancado')">Prosseguir para o Curso</button>
-                    </div>
-                </div>
+        <!-- Seção de E-books -->
+        <div class="section">
+            <h2>E-books</h2>
+            <div class="grid" id="ebooksGrid">
+                <!-- Os e-books serão carregados dinamicamente aqui -->
             </div>
         </div>
     </div>
 
     <script>
-        // Função para expandir o card do curso
-        function expandCourse(card) {
-            const allCards = document.querySelectorAll('.course-card');
+        // Dados dos cursos (agrupados por curso completo)
+        const cursos = [
+            {
+                id: "vitalidade-completo",
+                title: "Vitalidade para Idosos (Curso Completo)",
+                description: "Aprenda tudo sobre saúde, exercícios, alimentação e bem-estar para idosos.",
+                price: "R$300,00",
+                modulos: [
+                    "Módulo 1: Introdução à Saúde do Idoso",
+                    "Módulo 2: Exercícios e Mobilidade",
+                    "Módulo 3: Alimentação Saudável",
+                    "Módulo 4: Saúde Mental",
+                    "Módulo 5: Prevenção de Quedas",
+                    "Módulo 6: Cuidadores e Apoio Familiar",
+                    "Módulo 7: Envelhecimento Ativo"
+                ]
+            },
+            {
+                id: "transformacao-completo",
+                title: "Transformação Corporal (Curso Completo)",
+                description: "Domine os fundamentos da transformação corporal, incluindo exercícios e nutrição.",
+                price: "R$250,00",
+                modulos: [
+                    "Módulo 1: Fundamentos da Transformação Corporal",
+                    "Módulo 2: Exercícios para Definição Muscular",
+                    "Módulo 3: Nutrição para Transformação Corporal"
+                ]
+            },
+            {
+                id: "solucao-negocios-completo",
+                title: "Solução para Negócios (Curso Completo)",
+                description: "Aprenda a gerenciar e alavancar seu negócio com técnicas eficientes.",
+                price: "R$200,00",
+                modulos: [
+                    "Módulo 1: Gestão Eficiente",
+                    "Módulo 2: Marketing Digital"
+                ]
+            },
+            {
+                id: "desenvolvimento-completo",
+                title: "Desenvolvimento Pessoal (Curso Completo)",
+                description: "Desenvolva autoconhecimento, autocontrole e comunicação eficaz.",
+                price: "R$150,00",
+                modulos: [
+                    "Módulo 1: Autoconhecimento e Autocontrole",
+                    "Módulo 2: Comunicação Eficaz"
+                ]
+            },
+            {
+                id: "bemestar-completo",
+                title: "Bem-Estar e Saúde (Curso Completo)",
+                description: "Aprenda a criar hábitos saudáveis e gerenciar o estresse.",
+                price: "R$150,00",
+                modulos: [
+                    "Módulo 1: Hábitos Saudáveis para uma Vida Plena",
+                    "Módulo 2: Gerenciamento do Estresse"
+                ]
+            },
+            {
+                id: "superacao-completo",
+                title: "Superação de Desafios (Curso Completo)",
+                description: "Desenvolva resiliência e aprenda a superar limitações.",
+                price: "R$150,00",
+                modulos: [
+                    "Módulo 1: Como Vencer Limitações",
+                    "Módulo 2: Resiliência e Persistência"
+                ]
+            },
+            {
+                id: "python-completo",
+                title: "Programação em Python (Curso Completo)",
+                description: "Aprenda Python do básico ao avançado, incluindo POO e bibliotecas populares.",
+                price: "R$300,00",
+                modulos: [
+                    "Curso de Python Básico",
+                    "Curso de Python Avançado"
+                ]
+            }
+        ];
+
+        // Dados dos e-books (todos os volumes inclusos no mesmo arquivo)
+        const ebooks = [
+            {
+                id: "antiotario",
+                title: "AntiOtário (Volumes 1, 2 e 3)",
+                description: "Um guia prático completo para não cair em armadilhas financeiras. Inclui todos os volumes em um único arquivo.",
+                price: "R$50,00"
+            },
+            {
+                id: "manipulando-mentes",
+                title: "Manipulando Mentes",
+                description: "Entenda como a mente humana pode ser influenciada.",
+                price: "R$40,00"
+            },
+            {
+                id: "door-thriller",
+                title: "Door Thriller",
+                description: "Um suspense emocionante que vai te prender até a última página.",
+                price: "R$35,00"
+            },
+            {
+                id: "psicologia-das-emocoes",
+                title: "Psicologia das Emoções",
+                description: "Descubra como as emoções influenciam nosso comportamento.",
+                price: "R$35,00"
+            },
+            {
+                id: "controle-total",
+                title: "Controle Total",
+                description: "Aprenda técnicas avançadas de controle emocional e mental.",
+                price: "R$45,00"
+            }
+        ];
+
+        // Função para criar os cards de cursos
+        function renderCursos() {
+            const cursosGrid = document.getElementById('cursosGrid');
+            cursos.forEach(curso => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3>${curso.title}</h3>
+                    <p>${curso.description}</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p><strong>Módulos Incluídos:</strong></p>
+                        <ul>
+                            ${curso.modulos.map(modulo => `<li>${modulo}</li>`).join('')}
+                        </ul>
+                        <p><strong>Valor:</strong> ${curso.price}</p>
+                        <button onclick="proceedToPurchase('${curso.id}')">Comprar Agora</button>
+                    </div>
+                `;
+                card.onclick = () => expandCard(card);
+                cursosGrid.appendChild(card);
+            });
+        }
+
+        // Função para criar os cards de e-books
+        function renderEbooks() {
+            const ebooksGrid = document.getElementById('ebooksGrid');
+            ebooks.forEach(ebook => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3>${ebook.title}</h3>
+                    <p>${ebook.description}</p>
+                    <div class="expanded-content" style="display: none;">
+                        <p><strong>Valor:</strong> ${ebook.price}</p>
+                        <button onclick="proceedToPurchase('${ebook.id}')">Comprar Agora</button>
+                    </div>
+                `;
+                card.onclick = () => expandCard(card);
+                ebooksGrid.appendChild(card);
+            });
+        }
+
+        // Função para expandir o card
+        function expandCard(card) {
+            const allCards = document.querySelectorAll('.card');
             allCards.forEach(c => {
                 if (c !== card) {
                     c.classList.remove('expanded');
@@ -342,10 +272,14 @@
             expandedContent.style.display = card.classList.contains('expanded') ? 'block' : 'none';
         }
 
-        // Função para prosseguir para a página de compra do curso
-        function proceedToCourse(course) {
-            window.location.href = `comprar_curso.html?curso=${course}`;
+        // Função para redirecionar para a página de compra
+        function proceedToPurchase(productId) {
+            window.location.href = `comprar.html?produto=${productId}`;
         }
+
+        // Renderizar cursos e e-books ao carregar a página
+        renderCursos();
+        renderEbooks();
     </script>
 </body>
 </html>
