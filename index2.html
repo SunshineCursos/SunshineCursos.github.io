@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assista xl3xi4 na Twitch!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a192f, #1a365f);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #64ffda;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a8b2d1;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .twitch-embed {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* Proporção 16:9 (altura/largura) */
+            position: relative;
+        }
+
+        .twitch-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .twitch-button {
+            padding: 10px 20px;
+            background: #6441a5;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .twitch-button:hover {
+            background: #7b5bbe;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Assista xl3xi4 na Twitch!</h1>
+        <p>Junte-se a mim para lives incríveis de games e muito mais.</p>
+    </section>
+
+    <!-- Container do Vídeo -->
+    <div class="video-container">
+        <div id="twitch-embed" class="twitch-embed"></div>
+    </div>
+
+    <!-- Botão para visitar o canal -->
+    <a href="https://www.twitch.tv/xl3xi4" class="twitch-button">Visitar Canal</a>
+
+    <!-- Script do Twitch Embed -->
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script>
+        // Configuração do Twitch Embed
+        new Twitch.Embed("twitch-embed", {
+            width: "100%",
+            height: "100%",
+            channel: "xl3xi4", // Nome do canal da Twitch
+            layout: "video",  // Exibe o player de vídeo
+            autoplay: true    // Inicia a transmissão automaticamente
+        });
+    </script>
+</body>
+</html>
