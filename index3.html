@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staking de Solana com Marinade Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a192f, #1a365f);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #64ffda;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a8b2d1;
+            margin-bottom: 20px;
+        }
+
+        .staking-container {
+            background: rgba(17, 34, 64, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .staking-container h2 {
+            font-size: 1.8rem;
+            color: #64ffda;
+            margin-bottom: 20px;
+        }
+
+        .staking-container p {
+            font-size: 1.2rem;
+            color: #a8b2d1;
+            margin-bottom: 20px;
+        }
+
+        .staking-container button {
+            padding: 10px 20px;
+            background: #6441a5;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .staking-container button:hover {
+            background: #7b5bbe;
+        }
+
+        .staking-container button:disabled {
+            background: #444;
+            cursor: not-allowed;
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .staking-container h2 {
+                font-size: 1.5rem;
+            }
+
+            .staking-container p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Staking de Solana</h1>
+        <p>Conecte sua Phantom Wallet e comece a staking com a Marinade Finance!</p>
+    </section>
+
+    <div class="staking-container">
+        <h2>Status do Staking</h2>
+        <p>Saldo em staking:</p>
+        <div class="balance" id="balance">0.000000 SOL</div>
+        <button id="connectWalletButton">Conectar Phantom Wallet</button>
+        <button id="stakeButton" disabled>Realizar Staking</button>
+        <button id="unstakeButton" disabled>Realizar Des-Staking</button>
+    </div>
+
+    <script>
+        // Variáveis globais
+        let publicKey; // Chave pública da Phantom Wallet
+
+        // Elementos do DOM
+        const connectWalletButton = document.getElementById('connectWalletButton');
+        const stakeButton = document.getElementById('stakeButton');
+        const unstakeButton = document.getElementById('unstakeButton');
+
+        // Função para conectar a Phantom Wallet
+        async function connectWallet() {
+            if ('solana' in window) {
+                const provider = window.solana;
+                if (provider.isPhantom) {
+                    try {
+                        const response = await provider.connect();
+                        publicKey = response.publicKey.toString();
+                        console.log("Conectado à Phantom Wallet:", publicKey);
+                        connectWalletButton.textContent = "Conectado";
+                        connectWalletButton.disabled = true;
+                        stakeButton.disabled = false;
+                        unstakeButton.disabled = false;
+                    } catch (err) {
+                        console.error("Erro ao conectar à Phantom Wallet:", err);
+                    }
+                } else {
+                    alert("Phantom Wallet não está instalada!");
+                }
+            } else {
+                // Deep Linking para abrir o aplicativo Phantom no smartphone
+                const phantomDeepLink = "https://phantom.app/ul/v1/connect";
+                window.location.href = phantomDeepLink;
+            }
+        }
+
+        // Função para realizar staking
+        async function stake() {
+            if (!publicKey) {
+                alert("Conecte sua Phantom Wallet primeiro.");
+                return;
+            }
+
+            try {
+                const response = await fetch("/stake", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        wallet_public_key: publicKey,
+                        amount: 1.0, // Quantidade de SOL para staking
+                    }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert("Staking realizado com sucesso!");
+                    console.log("Resposta do staking:", data);
+                } else {
+                    alert("Erro ao realizar staking.");
+                }
+            } catch (err) {
+                console.error("Erro ao realizar staking:", err);
+            }
+        }
+
+        // Função para realizar des-staking
+        async function unstake() {
+            if (!publicKey) {
+                alert("Conecte sua Phantom Wallet primeiro.");
+                return;
+            }
+
+            try {
+                const response = await fetch("/unstake", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        wallet_public_key: publicKey,
+                        amount: 1.0, // Quantidade de SOL para des-staking
+                    }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert("Des-staking realizado com sucesso!");
+                    console.log("Resposta do des-staking:", data);
+                } else {
+                    alert("Erro ao realizar des-staking.");
+                }
+            } catch (err) {
+                console.error("Erro ao realizar des-staking:", err);
+            }
+        }
+
+        // Event listeners
+        connectWalletButton.addEventListener('click', connectWallet);
+        stakeButton.addEventListener('click', stake);
+        unstakeButton.addEventListener('click', unstake);
+    </script>
+</body>
+</html>
