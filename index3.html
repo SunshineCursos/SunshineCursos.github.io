@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Discreto</title>
+    <title>Coletar Geolocalização</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -25,65 +25,87 @@
             max-width: 400px;
             width: 100%;
         }
-        a {
-            text-decoration: none;
-            color: #0073e6;
-            font-size: 18px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #005bb5;
-            text-decoration: underline;
-        }
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 16px;
-            line-height: 1.5;
-        }
         .loading {
             display: none;
             margin-top: 1rem;
             font-size: 14px;
             color: #666;
         }
+        .success {
+            display: none;
+            margin-top: 1rem;
+            font-size: 14px;
+            color: green;
+        }
+        .error {
+            display: none;
+            margin-top: 1rem;
+            font-size: 14px;
+            color: red;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <p>Olá! Aqui está o link que você pediu:</p>
-        <a id="discreetLink" href="#" target="_blank">Clique aqui para ver uma mensagem especial</a>
-        <div id="loadingMessage" class="loading">Obtendo localização...</div>
+        <p>Estamos coletando sua localização para melhorar nossos serviços.</p>
+        <div id="loadingMessage" class="loading">Coletando localização...</div>
+        <div id="successMessage" class="success">Localização coletada com sucesso!</div>
+        <div id="errorMessage" class="error">Erro ao coletar localização.</div>
     </div>
 
     <script>
-        const discreetLink = document.getElementById('discreetLink');
         const loadingMessage = document.getElementById('loadingMessage');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
 
-        discreetLink.addEventListener('click', function(event) {
-            event.preventDefault(); // Impede o comportamento padrão do link
+        // Função para enviar a localização para o backend
+        const sendLocationToBackend = async (latitude, longitude) => {
+            try {
+                const response = await fetch('http://localhost:3000/save-location', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ latitude, longitude }),
+                });
 
-            loadingMessage.style.display = 'block'; // Mostra mensagem de carregamento
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                } else {
+                    throw new Error('Erro ao enviar localização');
+                }
+            } catch (error) {
+                errorMessage.style.display = 'block';
+                console.error('Erro:', error);
+            } finally {
+                loadingMessage.style.display = 'none';
+            }
+        };
 
+        // Função principal para obter a geolocalização
+        const getLocation = () => {
             if (navigator.geolocation) {
+                loadingMessage.style.display = 'block';
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
                         const { latitude, longitude } = position.coords;
-                        const mapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
-                        window.open(mapsUrl, '_blank'); // Abre o link em uma nova aba
-                        loadingMessage.style.display = 'none'; // Oculta a mensagem de carregamento
+                        sendLocationToBackend(latitude, longitude); // Envia para o backend
                     },
                     (error) => {
-                        alert('Erro ao obter a localização: ' + error.message);
-                        loadingMessage.style.display = 'none'; // Oculta a mensagem de carregamento
+                        errorMessage.style.display = 'block';
+                        loadingMessage.style.display = 'none';
+                        console.error('Erro ao obter localização:', error.message);
                     },
-                    { timeout: 10000 } // Define um timeout de 10 segundos
+                    { timeout: 10000 } // Timeout de 10 segundos
                 );
             } else {
-                alert('Geolocalização não é suportada pelo seu navegador.');
-                loadingMessage.style.display = 'none'; // Oculta a mensagem de carregamento
+                errorMessage.style.display = 'block';
+                console.error('Geolocalização não é suportada pelo navegador.');
             }
-        });
+        };
+
+        // Inicia a coleta de localização quando a página carrega
+        window.onload = getLocation;
     </script>
 </body>
 </html>
