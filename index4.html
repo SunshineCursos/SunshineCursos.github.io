@@ -5,28 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebSec Scanner | Quantum Edition</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Cores Quânticas */
+            /* Cores Quânticas Aprimoradas */
             --quantum-blue: #00f7ff;
             --quantum-purple: #b300ff;
             --quantum-pink: #ff00b7;
+            --quantum-green: #00ff88;
+            --quantum-yellow: #ffe05d;
             --quantum-dark: #0a0e17;
             --quantum-darker: #050a10;
+            --quantum-darker-2: #02050a;
             --quantum-light: #d0f4ff;
+            --quantum-lighter: #e6f9ff;
             
-            /* Efeitos de Partículas */
+            /* Efeitos de Partículas Aprimorados */
             --particle-glow: 0 0 15px rgba(0, 247, 255, 0.7),
                              0 0 30px rgba(179, 0, 255, 0.5),
                              0 0 45px rgba(255, 0, 183, 0.3);
             
-            /* Gradientes Quânticos */
+            /* Gradientes Quânticos Aprimorados */
             --gradient-primary: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
             --gradient-accent: linear-gradient(135deg, var(--quantum-pink), var(--quantum-purple));
+            --gradient-danger: linear-gradient(135deg, var(--quantum-pink), #ff0000);
+            --gradient-success: linear-gradient(135deg, var(--quantum-green), var(--quantum-blue));
             
-            /* Transições Holográficas */
+            /* Transições Holográficas Aprimoradas */
             --transition-quantum: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-quantum-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -49,7 +56,7 @@
             position: relative;
         }
 
-        /* Efeito de Partículas */
+        /* Efeito de Partículas Aprimorado */
         .particles {
             position: fixed;
             top: 0;
@@ -69,13 +76,25 @@
             opacity: 0.3;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-100px) translateX(100px); }
-            100% { transform: translateY(0) translateX(0); }
+        .particle:nth-child(3n+1) {
+            background: var(--quantum-purple);
+            animation-delay: -5s;
+            animation-duration: 20s;
         }
 
-        /* Efeito de Circuito */
+        .particle:nth-child(3n+2) {
+            background: var(--quantum-pink);
+            animation-delay: -10s;
+            animation-duration: 25s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); }
+            50% { transform: translateY(-100px) translateX(100px) rotate(180deg); }
+            100% { transform: translateY(0) translateX(0) rotate(360deg); }
+        }
+
+        /* Efeito de Circuito Aprimorado */
         .circuit-overlay {
             position: fixed;
             top: 0;
@@ -88,9 +107,15 @@
             background-size: 40px 40px;
             z-index: -1;
             pointer-events: none;
+            animation: circuit-move 120s linear infinite;
         }
 
-        /* Layout Principal */
+        @keyframes circuit-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        /* Layout Principal Aprimorado */
         .quantum-container {
             display: grid;
             grid-template-areas:
@@ -105,7 +130,7 @@
             overflow: hidden;
         }
 
-        /* Cabeçalho Holográfico */
+        /* Cabeçalho Holográfico Aprimorado */
         header {
             grid-area: header;
             background: rgba(10, 14, 23, 0.95);
@@ -125,7 +150,7 @@
             position: relative;
         }
 
-        /* Logo Quântico */
+        /* Logo Quântico Aprimorado */
         .quantum-logo {
             display: flex;
             align-items: center;
@@ -196,7 +221,7 @@
             clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
         }
 
-        /* Navegação Quântica */
+        /* Navegação Quântica Aprimorada */
         .quantum-nav {
             display: flex;
             align-items: center;
@@ -261,7 +286,7 @@
             font-size: 1.2rem;
         }
 
-        /* Botões Quânticos */
+        /* Botões Quânticos Aprimorados */
         .quantum-btn {
             display: inline-flex;
             align-items: center;
@@ -343,14 +368,46 @@
             background: var(--quantum-blue);
         }
 
-        /* Conteúdo Principal */
+        .btn-danger {
+            background: transparent;
+            border: 2px solid var(--quantum-pink);
+            color: var(--quantum-pink);
+        }
+
+        .btn-danger::before {
+            background: var(--quantum-pink);
+            opacity: 0.1;
+        }
+
+        .btn-danger:hover {
+            color: var(--quantum-dark);
+            background: var(--quantum-pink);
+        }
+
+        .btn-success {
+            background: transparent;
+            border: 2px solid var(--quantum-green);
+            color: var(--quantum-green);
+        }
+
+        .btn-success::before {
+            background: var(--quantum-green);
+            opacity: 0.1;
+        }
+
+        .btn-success:hover {
+            color: var(--quantum-dark);
+            background: var(--quantum-green);
+        }
+
+        /* Conteúdo Principal Aprimorado */
         main {
             grid-area: main;
             padding: 3rem;
             position: relative;
         }
 
-        /* Seções Holográficas */
+        /* Seções Holográficas Aprimoradas */
         .quantum-section {
             background: rgba(10, 14, 23, 0.8);
             backdrop-filter: blur(15px);
@@ -424,7 +481,7 @@
             gap: 1.5rem;
         }
 
-        /* Painel de Status Quântico */
+        /* Painel de Status Quântico Aprimorado */
         .quantum-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -474,11 +531,11 @@
         }
 
         .stat-card.low {
-            border-top: 4px solid #00ff88;
+            border-top: 4px solid var(--quantum-green);
         }
 
         .stat-card.info {
-            border-top: 4px solid #ffe05d;
+            border-top: 4px solid var(--quantum-yellow);
         }
 
         .stat-title {
@@ -514,12 +571,12 @@
         }
 
         .stat-card.low .stat-value {
-            color: #00ff88;
+            color: var(--quantum-green);
             text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
         }
 
         .stat-card.info .stat-value {
-            color: #ffe05d;
+            color: var(--quantum-yellow);
             text-shadow: 0 0 15px rgba(255, 224, 93, 0.5);
         }
 
@@ -542,7 +599,7 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Lista de Vulnerabilidades */
+        /* Lista de Vulnerabilidades Aprimorada */
         .vulnerabilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
@@ -589,7 +646,11 @@
         }
 
         .vulnerability-hologram.low {
-            border-left-color: #00ff88;
+            border-left-color: var(--quantum-green);
+        }
+
+        .vulnerability-hologram.info {
+            border-left-color: var(--quantum-yellow);
         }
 
         .vulnerability-header {
@@ -621,1617 +682,4 @@
             font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .severity-badge.critical {
-            background: rgba(255, 0, 183, 0.15);
-            color: var(--quantum-pink);
-            border: 1px solid var(--quantum-pink);
-            box-shadow: 0 0 15px rgba(255, 0, 183, 0.3);
-        }
-
-        .severity-badge.high {
-            background: rgba(179, 0, 255, 0.15);
-            color: var(--quantum-purple);
-            border: 1px solid var(--quantum-purple);
-            box-shadow: 0 0 15px rgba(179, 0, 255, 0.3);
-        }
-
-        .severity-badge.medium {
-            background: rgba(0, 247, 255, 0.15);
-            color: var(--quantum-blue);
-            border: 1px solid var(--quantum-blue);
-            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
-        }
-
-        .severity-badge.low {
-            background: rgba(0, 255, 136, 0.15);
-            color: #00ff88;
-            border: 1px solid #00ff88;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
-        }
-
-        .vulnerability-content {
-            margin-bottom: 1.5rem;
-        }
-
-        .vulnerability-description {
-            margin-bottom: 1.5rem;
-            color: rgba(208, 244, 255, 0.9);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        .recommendation-panel {
-            padding: 1.5rem;
-            background: rgba(5, 10, 16, 0.8);
-            border-radius: 10px;
-            border-left: 4px solid var(--quantum-blue);
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .recommendation-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-primary);
-        }
-
-        .recommendation-title {
-            font-weight: 600;
-            color: var(--quantum-blue);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .recommendation-text {
-            color: rgba(208, 244, 255, 0.9);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .details-hologram {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: rgba(5, 10, 16, 0.8);
-            border-radius: 10px;
-            border-left: 4px solid var(--quantum-purple);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            overflow-x: auto;
-            position: relative;
-        }
-
-        .details-hologram::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-accent);
-        }
-
-        .details-title {
-            font-weight: 600;
-            color: var(--quantum-purple);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.1rem;
-        }
-
-        /* Formulário Quântico */
-        .quantum-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.8rem;
-            position: relative;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: var(--quantum-blue);
-            letter-spacing: 1px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .form-label i {
-            font-size: 1.2rem;
-        }
-
-        .quantum-input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            background: rgba(5, 10, 16, 0.6);
-            border: 1px solid rgba(0, 247, 255, 0.3);
-            border-radius: 8px;
-            color: var(--quantum-light);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            transition: var(--transition-quantum);
-        }
-
-        .quantum-input:focus {
-            outline: none;
-            border-color: var(--quantum-purple);
-            box-shadow: 0 0 0 3px rgba(179, 0, 255, 0.3);
-        }
-
-        .quantum-input::placeholder {
-            color: rgba(208, 244, 255, 0.5);
-            font-family: 'Rajdhani', sans-serif;
-        }
-
-        .quantum-select {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            background: rgba(5, 10, 16, 0.6);
-            border: 1px solid rgba(0, 247, 255, 0.3);
-            border-radius: 8px;
-            color: var(--quantum-light);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            transition: var(--transition-quantum);
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2300f7ff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1.5rem center;
-            background-size: 12px;
-        }
-
-        .quantum-select:focus {
-            outline: none;
-            border-color: var(--quantum-purple);
-            box-shadow: 0 0 0 3px rgba(179, 0, 255, 0.3);
-        }
-
-        .form-actions {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: flex-end;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        /* Tela de Carregamento Quântica */
-        .quantum-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 10, 16, 0.95);
-            backdrop-filter: blur(20px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .quantum-loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-content {
-            text-align: center;
-            max-width: 700px;
-            padding: 3rem;
-            position: relative;
-        }
-
-        .quantum-sphere {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, var(--quantum-blue), var(--quantum-purple));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--particle-glow);
-            animation: pulse 3s infinite alternate;
-            margin: 0 auto 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quantum-sphere::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%);
-            transform: rotate(45deg);
-            animation: shine 8s infinite;
-        }
-
-        .quantum-sphere i {
-            font-size: 3rem;
-            color: var(--quantum-dark);
-            z-index: 2;
-        }
-
-        .loader-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            color: var(--quantum-blue);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .loader-title::after {
-            content: 'QUANTUM SCAN';
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: linear-gradient(90deg, var(--quantum-pink), var(--quantum-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-        }
-
-        .loader-subtitle {
-            color: rgba(208, 244, 255, 0.8);
-            margin-bottom: 3rem;
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-
-        .quantum-progress {
-            width: 100%;
-            height: 10px;
-            background: rgba(0, 247, 255, 0.1);
-            border-radius: 5px;
-            margin-bottom: 3rem;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .quantum-progress::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            transform-origin: left;
-            animation: progress-shine 3s infinite;
-        }
-
-        @keyframes progress-shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: var(--gradient-accent);
-            border-radius: 5px;
-            width: 0%;
-            transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-            position: relative;
-            z-index: 2;
-        }
-
-        .loader-status {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--quantum-blue);
-            margin-bottom: 2rem;
-            min-height: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .scan-metrics {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-top: 3rem;
-        }
-
-        .metric-item {
-            text-align: center;
-            position: relative;
-            padding: 0 1.5rem;
-        }
-
-        .metric-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            width: 1px;
-            height: 50px;
-            background: rgba(0, 247, 255, 0.3);
-        }
-
-        .metric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--quantum-blue);
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 0.5rem;
-        }
-
-        .metric-label {
-            font-size: 0.9rem;
-            color: rgba(208, 244, 255, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        /* Rodapé Quântico */
-        footer {
-            grid-area: footer;
-            background: rgba(10, 14, 23, 0.95);
-            backdrop-filter: blur(15px);
-            padding: 3rem;
-            text-align: center;
-            border-top: 1px solid rgba(0, 247, 255, 0.2);
-            position: relative;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            position: relative;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
-
-        .footer-logo i {
-            font-size: 1.5rem;
-            color: var(--quantum-blue);
-        }
-
-        .footer-logo-text {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            background: linear-gradient(90deg, var(--quantum-blue), var(--quantum-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 2px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-link {
-            color: var(--quantum-light);
-            text-decoration: none;
-            transition: var(--transition-quantum);
-            position: relative;
-            font-weight: 600;
-        }
-
-        .footer-link::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--quantum-blue);
-            transition: var(--transition-quantum);
-        }
-
-        .footer-link:hover {
-            color: var(--quantum-blue);
-        }
-
-        .footer-link:hover::after {
-            width: 100%;
-        }
-
-        .footer-text {
-            color: rgba(208, 244, 255, 0.7);
-            font-size: 0.95rem;
-            max-width: 800px;
-            line-height: 1.8;
-        }
-
-        .social-quantum {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            color: var(--quantum-light);
-            font-size: 1.5rem;
-            transition: var(--transition-quantum);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            opacity: 0;
-            transition: var(--transition-quantum);
-            z-index: -1;
-        }
-
-        .social-link:hover {
-            color: var(--quantum-dark);
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        .social-link:hover::before {
-            opacity: 1;
-        }
-
-        /* Efeitos de Partículas */
-        @keyframes particle-float {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
-        }
-
-        /* Responsividade Quântica */
-        @media (max-width: 1200px) {
-            .vulnerabilities-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .quantum-form {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            
-            .quantum-nav {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .nav-list {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            main {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .quantum-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
-            }
-            
-            .section-actions {
-                width: 100%;
-                justify-content: flex-end;
-            }
-            
-            .quantum-section {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            header {
-                padding: 1rem;
-            }
-            
-            .quantum-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .stat-card {
-                padding: 1.5rem;
-            }
-            
-            .form-actions {
-                flex-direction: column;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .scan-metrics {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .metric-item:not(:last-child)::after {
-                display: none;
-            }
-        }
-
-        /* Animações Quânticas */
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 247, 255, 0.5); }
-            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(179, 0, 255, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 247, 255, 0.5); }
-        }
-
-        @keyframes quantum-flicker {
-            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
-            20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.7; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Efeito de Partículas -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- Efeito de Circuito -->
-    <div class="circuit-overlay"></div>
-    
-    <!-- Tela de Carregamento Inicial -->
-    <div class="quantum-loader" id="quantum-loader">
-        <div class="loader-content">
-            <div class="quantum-sphere">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <h1 class="loader-title">WebSec Scanner</h1>
-            <p class="loader-subtitle">Inicializando sistema quântico de análise de vulnerabilidades</p>
-            
-            <div class="quantum-progress">
-                <div class="progress-bar" id="quantum-progress"></div>
-            </div>
-            
-            <div class="loader-status" id="loader-status">Carregando módulos de segurança...</div>
-            
-            <div class="scan-metrics">
-                <div class="metric-item">
-                    <div class="metric-value" id="loaded-modules">0</div>
-                    <div class="metric-label">Módulos</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-value" id="loaded-checks">0</div>
-                    <div class="metric-label">Verificações</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-value" id="loaded-vulns">0</div>
-                    <div class="metric-label">Vulnerabilidades</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Container Principal -->
-    <div class="quantum-container">
-        <!-- Cabeçalho Holográfico -->
-        <header>
-            <div class="header-content">
-                <a href="#" class="quantum-logo">
-                    <div class="logo-orb">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <span class="logo-text">WebSec Scanner</span>
-                </a>
-                
-                <nav class="quantum-nav">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active" data-section="dashboard">
-                                <i class="fas fa-tachometer-alt nav-icon"></i>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-section="scanner">
-                                <i class="fas fa-search nav-icon"></i>
-                                Scanner
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-section="reports">
-                                <i class="fas fa-file-alt nav-icon"></i>
-                                Relatórios
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-section="settings">
-                                <i class="fas fa-cog nav-icon"></i>
-                                Configurações
-                            </a>
-                        </li>
-                    </ul>
-                    
-                    <button class="quantum-btn btn-secondary">
-                        <i class="fas fa-user-secret"></i>
-                        Admin
-                    </button>
-                </nav>
-            </div>
-        </header>
-        
-        <!-- Conteúdo Principal -->
-        <main>
-            <!-- Dashboard Quântico -->
-            <section id="dashboard-section" class="quantum-section">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <i class="fas fa-tachometer-alt"></i>
-                        Dashboard Quântico
-                    </h2>
-                    <div class="section-actions">
-                        <button class="quantum-btn btn-secondary">
-                            <i class="fas fa-sync-alt"></i>
-                            Atualizar
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="quantum-stats">
-                    <div class="stat-card critical">
-                        <h3 class="stat-title">Ameaças Críticas</h3>
-                        <div class="stat-value">5</div>
-                        <p class="stat-description">Risco imediato ao sistema</p>
-                    </div>
-                    <div class="stat-card high">
-                        <h3 class="stat-title">Vulnerabilidades Altas</h3>
-                        <div class="stat-value">12</div>
-                        <p class="stat-description">Risco significativo</p>
-                    </div>
-                    <div class="stat-card medium">
-                        <h3 class="stat-title">Problemas Médios</h3>
-                        <div class="stat-value">8</div>
-                        <p class="stat-description">Risco moderado</p>
-                    </div>
-                    <div class="stat-card low">
-                        <h3 class="stat-title">Avisos Baixos</h3>
-                        <div class="stat-value">3</div>
-                        <p class="stat-description">Risco mínimo</p>
-                    </div>
-                    <div class="stat-card info">
-                        <h3 class="stat-title">Sites Monitorados</h3>
-                        <div class="stat-value">27</div>
-                        <p class="stat-description">Ativos no sistema</p>
-                    </div>
-                </div>
-                
-                <h3 style="margin-bottom: 2rem; color: var(--quantum-blue); font-family: 'Orbitron', sans-serif; display: flex; align-items: center; gap: 1rem;">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    ÚLTIMAS AMEAÇAS DETECTADAS
-                </h3>
-                
-                <div class="vulnerabilities-grid">
-                    <div class="vulnerability-hologram critical">
-                        <div class="vulnerability-header">
-                            <h4 class="vulnerability-title">
-                                <i class="fas fa-database"></i>
-                                SQL Injection em parâmetro 'id'
-                            </h4>
-                            <span class="severity-badge critical">
-                                <i class="fas fa-skull"></i>
-                                CRÍTICO
-                            </span>
-                        </div>
-                        <div class="vulnerability-content">
-                            <p class="vulnerability-description">
-                                O parâmetro 'id' na URL é vulnerável a injeção SQL, permitindo acesso não autorizado ao banco de dados. 
-                                Ataques podem resultar em vazamento de dados sensíveis, modificação ou exclusão de dados.
-                            </p>
-                            <div class="recommendation-panel">
-                                <h5 class="recommendation-title">
-                                    <i class="fas fa-lightbulb"></i>
-                                    Recomendação Quântica
-                                </h5>
-                                <p class="recommendation-text">
-                                    Implementar prepared statements com parâmetros parametrizados. Validar todas as entradas do usuário 
-                                    usando whitelist. Considerar o uso de ORM para todas as consultas ao banco de dados. Implementar 
-                                    WAF (Web Application Firewall) como camada adicional de proteção.
-                                </p>
-                            </div>
-                            <div class="details-hologram">
-                                <h5 class="details-title">
-                                    <i class="fas fa-info-circle"></i>
-                                    Detalhes Técnicos
-                                </h5>
-                                <p><strong>Payload testado:</strong> <code>1' OR '1'='1</code></p>
-                                <p><strong>Endpoint vulnerável:</strong> <code>/products/view?id=1' OR '1'='1</code></p>
-                                <p><strong>Método HTTP:</strong> GET</p>
-                                <p><strong>CWE:</strong> CWE-89 (SQL Injection)</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="vulnerability-hologram high">
-                        <div class="vulnerability-header">
-                            <h4 class="vulnerability-title">
-                                <i class="fas fa-code"></i>
-                                XSS Refletido em campo de busca
-                            </h4>
-                            <span class="severity-badge high">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                ALTO
-                            </span>
-                        </div>
-                        <div class="vulnerability-content">
-                            <p class="vulnerability-description">
-                                O campo de busca reflete entrada do usuário sem sanitização adequada, permitindo execução de JavaScript 
-                                malicioso no contexto do usuário. Isso pode levar a roubo de sessões, redirecionamentos maliciosos ou 
-                                ataques de phishing.
-                            </p>
-                            <div class="recommendation-panel">
-                                <h5 class="recommendation-title">
-                                    <i class="fas fa-lightbulb"></i>
-                                    Recomendação Quântica
-                                </h5>
-                                <p class="recommendation-text">
-                                    Implementar sanitização de HTML no lado do servidor usando bibliotecas como DOMPurify. Configurar 
-                                    Content-Security-Policy (CSP) com diretivas restritivas. Codificar toda a saída dinâmica usando 
-                                    contextos apropriados (HTML, JavaScript, CSS, URL).
-                                </p>
-                            </div>
-                            <div class="details-hologram">
-                                <h5 class="details-title">
-                                    <i class="fas fa-info-circle"></i>
-                                    Detalhes Técnicos
-                                </h5>
-                                <p><strong>Payload testado:</strong> <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>
-                                <p><strong>Endpoint vulnerável:</strong> <code>/search?q=&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>
-                                <p><strong>Método HTTP:</strong> GET</p>
-                                <p><strong>CWE:</strong> CWE-79 (Cross-site Scripting)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Scanner Quântico -->
-            <section id="scanner-section" class="quantum-section" style="display: none;">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <i class="fas fa-search"></i>
-                        Scanner Quântico
-                    </h2>
-                    <div class="section-actions">
-                        <button class="quantum-btn btn-secondary">
-                            <i class="fas fa-history"></i>
-                            Histórico
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="quantum-form">
-                    <div class="form-group">
-                        <label for="target-url">
-                            <i class="fas fa-globe"></i>
-                            URL do Alvo
-                        </label>
-                        <input type="url" id="target-url" class="quantum-input" placeholder="https://exemplo.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="scan-profile">
-                            <i class="fas fa-user-shield"></i>
-                            Perfil de Scan
-                        </label>
-                        <select id="scan-profile" class="quantum-select">
-                            <option value="quick">Scan Rápido</option>
-                            <option value="full" selected>Scan Completo</option>
-                            <option value="pentest">PenTest Avançado</option>
-                            <option value="custom">Personalizado</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="scan-depth">
-                            <i class="fas fa-layer-group"></i>
-                            Profundidade
-                        </label>
-                        <select id="scan-depth" class="quantum-select">
-                            <option value="1">Superfície (apenas URL fornecida)</option>
-                            <option value="2" selected>Médio (URL + links internos)</option>
-                            <option value="3">Profundo (URL + todos os links)</option>
-                            <option value="4">Quântico (Análise completa)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="ssl-verify">
-                            <i class="fas fa-lock"></i>
-                            Verificar SSL
-                        </label>
-                        <select id="ssl-verify" class="quantum-select">
-                            <option value="false">Não</option>
-                            <option value="true" selected>Sim</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button class="quantum-btn btn-secondary">
-                            <i class="fas fa-sliders-h"></i>
-                            Configurações Avançadas
-                        </button>
-                        <button class="quantum-btn btn-primary" id="start-scan-btn">
-                            <i class="fas fa-play"></i>
-                            Iniciar Scan Quântico
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Tela de Carregamento do Scan -->
-                <div class="quantum-loader" id="scan-loader" style="position: relative; top: auto; left: auto; background: transparent; backdrop-filter: none;">
-                    <div class="loader-content">
-                        <div class="quantum-sphere">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </div>
-                        <h1 class="loader-title">Análise Quântica</h1>
-                        <p class="loader-subtitle">O scanner quântico está analisando a aplicação em busca de vulnerabilidades multidimensionais</p>
-                        
-                        <div class="quantum-progress">
-                            <div class="progress-bar" id="scan-progress"></div>
-                        </div>
-                        
-                        <div class="loader-status" id="scan-status">Inicializando scanner quântico...</div>
-                        
-                        <div class="scan-metrics">
-                            <div class="metric-item">
-                                <div class="metric-value" id="scan-checks">0</div>
-                                <div class="metric-label">Verificações</div>
-                            </div>
-                            <div class="metric-item">
-                                <div class="metric-value" id="scan-vulns">0</div>
-                                <div class="metric-label">Vulnerabilidades</div>
-                            </div>
-                            <div class="metric-item">
-                                <div class="metric-value" id="scan-time">0s</div>
-                                <div class="metric-label">Tempo</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Resultados do Scan -->
-                <div id="scan-results" style="display: none;">
-                    <div class="section-header" style="margin-top: 3rem;">
-                        <h2 class="section-title">
-                            <i class="fas fa-file-alt"></i>
-                            Resultados Quânticos
-                        </h2>
-                        <div class="section-actions">
-                            <button class="quantum-btn btn-secondary">
-                                <i class="fas fa-download"></i>
-                                Exportar
-                            </button>
-                            <button class="quantum-btn btn-primary">
-                                <i class="fas fa-share-alt"></i>
-                                Compartilhar
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="quantum-stats">
-                        <div class="stat-card critical">
-                            <h3 class="stat-title">Ameaças Críticas</h3>
-                            <div class="stat-value" id="result-critical">0</div>
-                            <p class="stat-description">Risco imediato</p>
-                        </div>
-                        <div class="stat-card high">
-                            <h3 class="stat-title">Vulnerabilidades Altas</h3>
-                            <div class="stat-value" id="result-high">0</div>
-                            <p class="stat-description">Risco significativo</p>
-                        </div>
-                        <div class="stat-card medium">
-                            <h3 class="stat-title">Problemas Médios</h3>
-                            <div class="stat-value" id="result-medium">0</div>
-                            <p class="stat-description">Risco moderado</p>
-                        </div>
-                        <div class="stat-card low">
-                            <h3 class="stat-title">Avisos Baixos</h3>
-                            <div class="stat-value" id="result-low">0</div>
-                            <p class="stat-description">Risco mínimo</p>
-                        </div>
-                    </div>
-                    
-                    <h3 style="margin-bottom: 2rem; color: var(--quantum-blue); font-family: 'Orbitron', sans-serif; display: flex; align-items: center; gap: 1rem;">
-                        <i class="fas fa-server"></i>
-                        INFORMAÇÕES QUÂNTICAS DO SERVIDOR
-                    </h3>
-                    
-                    <div class="quantum-stats" id="server-info-results">
-                        <!-- Preenchido dinamicamente -->
-                    </div>
-                    
-                    <h3 style="margin-bottom: 2rem; color: var(--quantum-blue); font-family: 'Orbitron', sans-serif; display: flex; align-items: center; gap: 1rem; margin-top: 3rem;">
-                        <i class="fas fa-bug"></i>
-                        VULNERABILIDADES DETECTADAS
-                    </h3>
-                    
-                    <div class="vulnerabilities-grid" id="vulnerabilities-results">
-                        <!-- Preenchido dinamicamente -->
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Relatórios Quânticos -->
-            <section id="reports-section" class="quantum-section" style="display: none;">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <i class="fas fa-file-alt"></i>
-                        Relatórios Quânticos
-                    </h2>
-                    <div class="section-actions">
-                        <button class="quantum-btn btn-secondary">
-                            <i class="fas fa-filter"></i>
-                            Filtrar
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="vulnerabilities-grid">
-                    <div class="vulnerability-hologram info">
-                        <div class="vulnerability-header">
-                            <h4 class="vulnerability-title">
-                                <i class="fas fa-file-pdf"></i>
-                                Scan Completo - exemplo.com
-                            </h4>
-                            <span class="severity-badge" style="background: rgba(0, 247, 255, 0.15); color: var(--quantum-blue); border: 1px solid var(--quantum-blue);">
-                                <i class="fas fa-calendar-alt"></i>
-                                15/06/2023
-                            </span>
-                        </div>
-                        <div class="vulnerability-content">
-                            <p class="vulnerability-description">
-                                Scan quântico completo realizado no domínio exemplo.com, identificando 12 vulnerabilidades de segurança 
-                                de vários níveis de criticidade. O scan incluiu análise de 142 verificações diferentes.
-                            </p>
-                            <div style="display: flex; gap: 1.5rem; margin-top: 1.5rem;">
-                                <button class="quantum-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
-                                    <i class="fas fa-eye"></i>
-                                    Visualizar
-                                </button>
-                                <button class="quantum-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
-                                    <i class="fas fa-download"></i>
-                                    Baixar
-                                </button>
-                                <button class="quantum-btn btn-primary" style="padding: 0.8rem 1.5rem;">
-                                    <i class="fas fa-share-alt"></i>
-                                    Compartilhar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="vulnerability-hologram info">
-                        <div class="vulnerability-header">
-                            <h4 class="vulnerability-title">
-                                <i class="fas fa-file-excel"></i>
-                                PenTest - api.exemplo.com
-                            </h4>
-                            <span class="severity-badge" style="background: rgba(0, 247, 255, 0.15); color: var(--quantum-blue); border: 1px solid var(--quantum-blue);">
-                                <i class="fas fa-calendar-alt"></i>
-                                10/06/2023
-                            </span>
-                        </div>
-                        <div class="vulnerability-content">
-                            <p class="vulnerability-description">
-                                Teste de penetração avançado realizado na API de exemplo.com, identificando 3 vulnerabilidades críticas 
-                                e 7 problemas de configuração. O teste incluiu análise de 98 endpoints diferentes.
-                            </p>
-                            <div style="display: flex; gap: 1.5rem; margin-top: 1.5rem;">
-                                <button class="quantum-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
-                                    <i class="fas fa-eye"></i>
-                                    Visualizar
-                                </button>
-                                <button class="quantum-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
-                                    <i class="fas fa-download"></i>
-                                    Baixar
-                                </button>
-                                <button class="quantum-btn btn-primary" style="padding: 0.8rem 1.5rem;">
-                                    <i class="fas fa-share-alt"></i>
-                                    Compartilhar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Configurações Quânticas -->
-            <section id="settings-section" class="quantum-section" style="display: none;">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <i class="fas fa-cog"></i>
-                        Configurações Quânticas
-                    </h2>
-                    <div class="section-actions">
-                        <button class="quantum-btn btn-primary">
-                            <i class="fas fa-save"></i>
-                            Salvar
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="quantum-form">
-                    <div class="form-group">
-                        <label for="api-key">
-                            <i class="fas fa-key"></i>
-                            Chave da API Quântica
-                        </label>
-                        <input type="password" id="api-key" class="quantum-input" placeholder="Insira sua chave de API">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="theme">
-                            <i class="fas fa-palette"></i>
-                            Tema Quântico
-                        </label>
-                        <select id="theme" class="quantum-select">
-                            <option value="quantum" selected>Quantum (Padrão)</option>
-                            <option value="cyberpunk">Cyberpunk</option>
-                            <option value="dark-matter">Dark Matter</option>
-                            <option value="neutrino">Neutrino</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="notifications">
-                            <i class="fas fa-bell"></i>
-                            Notificações
-                        </label>
-                        <select id="notifications" class="quantum-select">
-                            <option value="all">Todas</option>
-                            <option value="critical" selected>Apenas Críticas</option>
-                            <option value="none">Nenhuma</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="auto-update">
-                            <i class="fas fa-sync-alt"></i>
-                            Atualização Automática
-                        </label>
-                        <select id="auto-update" class="quantum-select">
-                            <option value="true" selected>Ativado</option>
-                            <option value="false">Desativado</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button class="quantum-btn btn-secondary">
-                            <i class="fas fa-trash-alt"></i>
-                            Limpar Dados
-                        </button>
-                        <button class="quantum-btn btn-primary">
-                            <i class="fas fa-save"></i>
-                            Salvar Configurações
-                        </button>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <!-- Rodapé Quântico -->
-        <footer>
-            <div class="footer-content">
-                <a href="#" class="footer-logo">
-                    <i class="fas fa-shield-alt"></i>
-                    <span class="footer-logo-text">WebSec Quantum</span>
-                </a>
-                
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Documentação</a>
-                    <a href="#" class="footer-link">API</a>
-                    <a href="#" class="footer-link">Suporte</a>
-                    <a href="#" class="footer-link">Termos</a>
-                    <a href="#" class="footer-link">Privacidade</a>
-                </div>
-                
-                <p class="footer-text">
-                    WebSec Scanner - Quantum Edition v5.0 | © 2023 AI Security Team. Todos os direitos reservados.
-                    Este sistema utiliza tecnologia quântica para análise multidimensional de vulnerabilidades.
-                </p>
-                
-                <div class="social-quantum">
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <script>
-        // Efeito de Partículas
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = Math.floor(window.innerWidth / 10);
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Tamanho aleatório entre 1px e 3px
-                const size = Math.random() * 2 + 1;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Posição aleatória
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Cor aleatória baseada no tema
-                const colors = ['#00f7ff', '#b300ff', '#ff00b7'];
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                // Atraso e duração da animação
-                const delay = Math.random() * 15;
-                const duration = Math.random() * 10 + 10;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Simulação de Carregamento Inicial
-        function simulateInitialLoad() {
-            const loader = document.getElementById('quantum-loader');
-            const progressBar = document.getElementById('quantum-progress');
-            const loaderStatus = document.getElementById('loader-status');
-            const loadedModules = document.getElementById('loaded-modules');
-            const loadedChecks = document.getElementById('loaded-checks');
-            const loadedVulns = document.getElementById('loaded-vulns');
-            
-            let progress = 0;
-            let modules = 0;
-            let checks = 0;
-            let vulns = 0;
-            
-            const statusMessages = [
-                "Inicializando núcleo quântico...",
-                "Carregando módulos de segurança...",
-                "Preparando algoritmos de análise...",
-                "Sincronizando banco de vulnerabilidades...",
-                "Otimizando processos multidimensionais...",
-                "Pronto para iniciar análise quântica!"
-            ];
-            
-            const loadInterval = setInterval(() => {
-                progress += Math.random() * 8;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(loadInterval);
-                    
-                    setTimeout(() => {
-                        loader.classList.add('hidden');
-                    }, 800);
-                }
-                
-                progressBar.style.width = `${progress}%`;
-                
-                // Atualiza status
-                if (progress < 20) {
-                    loaderStatus.textContent = statusMessages[0];
-                    modules = Math.min(18, Math.floor(progress * 0.9));
-                    loadedModules.textContent = modules;
-                } else if (progress < 40) {
-                    loaderStatus.textContent = statusMessages[1];
-                    modules = Math.min(18, Math.floor(progress * 0.9));
-                    loadedModules.textContent = modules;
-                } else if (progress < 60) {
-                    loaderStatus.textContent = statusMessages[2];
-                    checks = Math.min(142, Math.floor((progress - 40) * 7.1));
-                    loadedChecks.textContent = checks;
-                } else if (progress < 80) {
-                    loaderStatus.textContent = statusMessages[3];
-                    checks = Math.min(142, Math.floor((progress - 40) * 7.1));
-                    loadedChecks.textContent = checks;
-                    vulns = Math.min(5243, Math.floor((progress - 60) * 262.15));
-                    loadedVulns.textContent = vulns;
-                } else {
-                    loaderStatus.textContent = statusMessages[4];
-                    vulns = Math.min(5243, Math.floor((progress - 60) * 262.15));
-                    loadedVulns.textContent = vulns;
-                    
-                    if (progress >= 100) {
-                        loaderStatus.textContent = statusMessages[5];
-                    }
-                }
-            }, 200);
-        }
-        
-        // Navegação entre Seções
-        function setupNavigation() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('.quantum-section');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove a classe active de todos os links
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    
-                    // Adiciona a classe active ao link clicado
-                    this.classList.add('active');
-                    
-                    // Esconde todas as seções
-                    sections.forEach(section => {
-                        section.style.display = 'none';
-                    });
-                    
-                    // Mostra a seção correspondente
-                    const sectionId = this.getAttribute('data-section') + '-section';
-                    document.getElementById(sectionId).style.display = 'block';
-                });
-            });
-        }
-        
-        // Simulação de Scan
-        function setupScanSimulation() {
-            const startScanBtn = document.getElementById('start-scan-btn');
-            if (!startScanBtn) return;
-            
-            startScanBtn.addEventListener('click', function() {
-                const url = document.getElementById('target-url').value;
-                if (!url) {
-                    alert('Por favor, insira uma URL válida para análise quântica');
-                    return;
-                }
-                
-                const scanLoader = document.getElementById('scan-loader');
-                const scanProgress = document.getElementById('scan-progress');
-                const scanStatus = document.getElementById('scan-status');
-                const scanChecks = document.getElementById('scan-checks');
-                const scanVulns = document.getElementById('scan-vulns');
-                const scanTime = document.getElementById('scan-time');
-                const scanResults = document.getElementById('scan-results');
-                
-                // Mostra o loading e esconde os resultados
-                scanLoader.style.display = 'flex';
-                scanResults.style.display = 'none';
-                
-                let progress = 0;
-                let checks = 0;
-                let vulns = 0;
-                let seconds = 0;
-                
-                // Atualiza o tempo a cada segundo
-                const timeInterval = setInterval(() => {
-                    seconds++;
-                    scanTime.textContent = `${seconds}s`;
-                }, 1000);
-                
-                const statusMessages = [
-                    "Inicializando scanner quântico...",
-                    "Analisando cabeçalhos HTTP...",
-                    "Verificando configurações SSL/TLS...",
-                    "Testando vulnerabilidades conhecidas...",
-                    "Analisando parâmetros de URL...",
-                    "Verificando configurações do servidor...",
-                    "Procurando arquivos sensíveis...",
-                    "Testando métodos HTTP...",
-                    "Analisando políticas de segurança...",
-                    "Gerando relatório quântico..."
-                ];
-                
-                // Simula o progresso do scan
-                const scanInterval = setInterval(() => {
-                    progress += Math.random() * 5;
-                    if (progress >= 100) {
-                        progress = 100;
-                        clearInterval(scanInterval);
-                        clearInterval(timeInterval);
-                        
-                        setTimeout(() => {
-                            scanLoader.style.display = 'none';
-                            scanResults.style.display = 'block';
-                            
-                            // Preenche os resultados do scan
-                            fillScanResults(url);
-                        }, 800);
-                    }
-                    
-                    scanProgress.style.width = `${progress}%`;
-                    
-                    // Atualiza status e métricas
-                    if (progress < 10) {
-                        scanStatus.textContent = statusMessages[0];
-                    } else if (progress < 20) {
-                        scanStatus.textContent = statusMessages[1];
-                        checks = Math.min(24, Math.floor((progress - 10) * 2.4));
-                        scanChecks.textContent = checks;
-                    } else if (progress < 30) {
-                        scanStatus.textContent = statusMessages[2];
-                        checks = Math.min(24, Math.floor((progress - 10) * 2.4));
-                        scanChecks.textContent = checks;
-                    } else if (progress < 40) {
-                        scanStatus.textContent = statusMessages[3];
-                        checks = Math.min(58, 24 + Math.floor((progress - 30) * 3.4));
-                        scanChecks.textContent = checks;
-                        vulns = Math.min(3, Math.floor((progress - 30) * 0.3));
-                        scanVulns.textContent = vulns;
-                    } else if (progress < 50) {
-                        scanStatus.textContent = statusMessages[4];
-                        checks = Math.min(58, 24 + Math.floor((progress - 30) * 3.4));
-                        scanChecks.textContent = checks;
-                        vulns = Math.min(3, Math.floor((progress - 30) * 0.3));
-                        scanVulns.textContent = vulns;
-                    } else if (progress < 60) {
-                        scanStatus.textContent = statusMessages[5];
-                        checks = Math.min(112, 58 + Math.floor((progress - 50) * 5.4));
-                        scanChecks.textContent = checks;
-                        vulns = Math.min(8, 3 + Math.floor((progress - 50) * 0.5));
-                        scanVulns.textContent = vulns;
-                    } else if (progress < 70) {
-                        scanStatus.textContent = statusMessages[6];
-                        checks = Math.min(112, 58 + Math.floor((progress - 50) * 5.4));
-                        scanChecks.textContent = checks;
-                        vulns = Math.min(8, 3 + Math.floor((progress - 50) * 0.5));
-                        scanVulns.textContent = vulns;
-                    } else if (progress < 80) {
-                        scanStatus.textContent = statusMessages[7];
-                        checks = Math.min(142, 112 + Math.floor((progress - 70) * 3));
-                        scanChecks.textContent = checks;
-                        vulns = Math.min(12, 8 + Math.floor((progress - 70) * 0.4));
-                        scanVulns.textContent = vulns;
-                    } else if (progress < 90) {
-                        scanStatus.textContent = statusMessages[8];
-                        checks = Math.min(142, 112 + Math.floor((progress - 70) * 3));
-                        scanChecks.textContent = checks;
-                        vulns = Math.min(12, 8 + Math.floor((progress - 70) * 0.4));
-                        scanVulns.textContent = vulns;
-                    } else {
-                        scanStatus.textContent = statusMessages[9];
-                    }
-                }, 300);
-            });
-        }
-        
-        // Preenche os resultados do scan
-        function fillScanResults(url) {
-            // Atualiza contagens
-            document.getElementById('result-critical').textContent = '3';
-            document.getElementById('result-high').textContent = '5';
-            document.getElementById('result-medium').textContent = '4';
-            document.getElementById('result-low').textContent = '2';
-            
-            // Preenche informações do servidor
-            const serverInfo = document.getElementById('server-info-results');
-            serverInfo.innerHTML = `
-                <div class="stat-card info">
-                    <h3 class="stat-title">URL Analisada</h3>
-                    <div class="stat-value" style="font-size: 1.5rem; word-break: break-all;">${url}</div>
-                    <p class="stat-description">Alvo principal</p>
-                </div>
-                <div class="stat-card info">
-                    <h3 class="stat-title">Servidor Web</h3>
-                    <div class="stat-value">Apache/2.4.41</div>
-                    <p class="stat-description">Ubuntu</p>
-                </div>
-                <div class="stat-card info">
-                    <h3 class="stat-title">Tecnologias</h3>
-                    <div class="stat-value">PHP 7.4</div>
-                    <p class="stat-description">jQuery, MySQL</p>
-                </div>
-                <div class="stat-card info">
-                    <h3 class="stat-title">SSL/TLS</h3>
-                    <div class="stat-value">TLS 1.2</div>
-                    <p class="stat-description">Let's Encrypt</p>
-                </div>
-                <div class="stat-card info">
-                    <h3 class="stat-title">Tempo de Resposta</h3>
-                    <div class="stat-value">187ms</div>
-                    <p class="stat-description">Média global</p>
-                </div>
-                <div class="stat-card info">
-                    <h3 class="stat-title">Endereço IP</h3>
-                    <div class="stat-value">192.168.1.1</div>
-                    <p class="stat-description">Localização: Global</p>
-                </div>
-            `;
-            
-            // Preenche vulnerabilidades
-            const vulnerabilities = document.getElementById('vulnerabilities-results');
-            vulnerabilities.innerHTML = `
-                <div class="vulnerability-hologram critical">
-                    <div class="vulnerability-header">
-                        <h4 class="vulnerability-title">
-                            <i class="fas fa-database"></i>
-                            SQL Injection em parâmetro 'id'
-                        </h4>
-                        <span class="severity-badge critical">
-                            <i class="fas fa-skull"></i>
-                            CRÍTICO
-                        </span>
-                    </div>
-                    <div class="vulnerability-content">
-                        <p class="vulnerability-description">
-                            O parâmetro 'id' na URL é vulnerável a injeção SQL, permitindo acesso não autorizado ao banco de dados. 
-                            Ataques podem resultar em vazamento de dados sensíveis, modificação ou exclusão de dados.
-                        </p>
-                        <div class="recommendation-panel">
-                            <h5 class="recommendation-title">
-                                <i class="fas fa-lightbulb"></i>
-                                Recomendação Quântica
-                            </h5>
-                            <p class="recommendation-text">
-                                Implementar prepared statements com parâmetros parametrizados. Validar todas as entradas do usuário 
-                                usando whitelist. Considerar o uso de ORM para todas as consultas ao banco de dados. Implementar 
-                                WAF (Web Application Firewall) como camada adicional de proteção.
-                            </p>
-                        </div>
-                        <div class="details-hologram">
-                            <h5 class="details-title">
-                                <i class="fas fa-info-circle"></i>
-                                Detalhes Técnicos
-                            </h5>
-                            <p><strong>Payload testado:</strong> <code>1' OR '1'='1</code></p>
-                            <p><strong>Endpoint vulnerável:</strong> <code>${url}/products/view?id=1' OR '1'='1</code></p>
-                            <p><strong>Método HTTP:</strong> GET</p>
-                            <p><strong>CWE:</strong> CWE-89 (SQL Injection)</p>
-                            <p><strong>CVSS:</strong> 9.8 (Crítico)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="vulnerability-hologram critical">
-                    <div class="vulnerability-header">
-                        <h4 class="vulnerability-title">
-                            <i class="fas fa-file-alt"></i>
-                            Arquivo .env exposto
-                        </h4>
-                        <span class="severity-badge critical">
-                            <i class="fas fa-skull"></i>
-                            CRÍTICO
-                        </span>
-                    </div>
-                    <div class="vulnerability-content">
-                        <p class="vulnerability-description">
-                            O arquivo de configuração .env está acessível publicamente, expondo credenciais sensíveis como chaves de API, 
-                            credenciais de banco de dados e configurações de ambiente.
-                        </p>
-                        <div class="recommendation-panel">
-                            <h5 class="recommendation-title">
-                                <i class="fas fa-lightbulb"></i>
-                                Recomendação Quântica
-                            </h5>
-                            <p class="recommendation-text">
-                                Remover o arquivo .env do diretório público e configurar o servidor web para bloquear acesso a arquivos .env. 
-                                Mover todas as configurações sensíveis para variáveis de ambiente do servidor. Implementar .gitignore para 
-                                prevenir commits acidentais de arquivos de configuração.
-                            </p>
-                        </div>
-                        <div class="details-hologram">
-                            <h5 class="details-title">
-                                <i class="fas fa-info-circle"></i>
-                                Detalhes Técnicos
-                            </h5>
-                            <p><strong>Endpoint vulnerável:</strong> <code>${url}/.env</code></p>
-                            <p><strong>Método HTTP:</strong> GET</p>
-                            <p><strong>CWE:</strong> CWE-538 (File and Directory Information Exposure)</p>
-                            <p><strong>CVSS:</strong> 9.1 (Crítico)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="vulnerability-hologram high">
-                    <div class="vulnerability-header">
-                        <h4 class="vulnerability-title">
-                            <i class="fas fa-code"></i>
-                            XSS Refletido em campo de busca
-                        </h4>
-                        <span class="severity-badge high">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            ALTO
-                        </span>
-                    </div>
-                    <div class="vulnerability-content">
-                        <p class="vulnerability-description">
-                            O campo de busca reflete entrada do usuário sem sanitização adequada, permitindo execução de JavaScript 
-                            malicioso no contexto do usuário. Isso pode levar a roubo de sessões, redirecionamentos maliciosos ou 
-                            ataques de phishing.
-                        </p>
-                        <div class="recommendation-panel">
-                            <h5 class="recommendation-title">
-                                <i class="fas fa-lightbulb"></i>
-                                Recomendação Quântica
-                            </h5>
-                            <p class="recommendation-text">
-                                Implementar sanitização de HTML no lado do servidor usando bibliotecas como DOMPurify. Configurar 
-                                Content-Security-Policy (CSP) com diretivas restritivas. Codificar toda a saída dinâmica usando 
-                                contextos apropriados (HTML, JavaScript, CSS, URL). Considerar o uso de frameworks modernos que 
-                                implementam proteções XSS por padrão.
-                            </p>
-                        </div>
-                        <div class="details-hologram">
-                            <h5 class="details-title">
-                                <i class="fas fa-info-circle"></i>
-                                Detalhes Técnicos
-                            </h5>
-                            <p><strong>Payload testado:</strong> <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>
-                            <p><strong>Endpoint vulnerável:</strong> <code>${url}/search?q=&lt;script&gt;alert('XSS')&lt;/script&gt;</code></p>
-                            <p><strong>Método HTTP:</strong> GET</p>
-                            <p><strong>CWE:</strong> CWE-79 (Cross-site Scripting)</p>
-                            <p><strong>CVSS:</strong> 7.1 (Alto)</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            simulateInitialLoad();
-            setupNavigation();
-            setupScanSimulation();
-        });
-    </script>
-</body>
-</html>
+            letter-spacing: 
